@@ -1,0 +1,828 @@
+{
+  "title": "Orbit Commerce Cloud · FY26 · 2026-04-28 22:52",
+  "subtitle": "Showcase narrative",
+  "author": "ZPresenter samples",
+  "audience": {
+    "technical_level": "technical",
+    "attention_span": "long"
+  },
+  "theme": {
+    "primary_hex": "1D4ED8",
+    "accent_hex": "059669",
+    "muted_hex": null
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "title": "Orbit Commerce Cloud · 2026-04-28 22:52",
+      "subtitle": "FY26 product narrative · enterprise GTM · design system beta",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Establish North Star; 18 min to Part II demos.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Executive framing",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Pause for CFO alignment question.",
+      "title_color_hex": "1D4ED8",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Why now",
+      "subtitle": null,
+      "bullets": [
+        "Composable storefront APIs overtaking monolithic suites (EU mid-market surge)",
+        "Checkout latency tied directly to conversion — infra budgets unlocking",
+        "Partners asking for reference architectures they can stamp repeatedly",
+        "Board mandate: predictable gross margin expansion without hiring spike"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Anchor all bullets with EU datapoints only if speaking to EU buyers.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Buyer vs champion tensions",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "CIO: sovereignty + SSO everywhere",
+        "CFO: COGS visibility per SKU lane",
+        "CISO: blast-radius budgets per tenant shard",
+        "RevOps: Salesforce hygiene before rollout"
+      ],
+      "bullets_right": [
+        "VP Eng: typed SDK + staged rollouts",
+        "VP Product: experimentation guardrails",
+        "Design: tokens parity across white-label tenants",
+        "Support: searchable incident timelines"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Pairwise role-play breakout optional.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Market motion",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "1D4ED8",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "title": "Pipeline creation ($M)",
+      "subtitle": "Rolling 4 quarters · blended segments",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Q1 FY25",
+        "Q2 FY25",
+        "Q3 FY25",
+        "Q4 FY25"
+      ],
+      "chart_series": [
+        {
+          "name": "Enterprise",
+          "values": [
+            4.2,
+            5.1,
+            6.0,
+            7.4
+          ]
+        },
+        {
+          "name": "Mid-market",
+          "values": [
+            2.8,
+            3.2,
+            3.9,
+            4.6
+          ]
+        },
+        {
+          "name": "Starter",
+          "values": [
+            1.1,
+            1.4,
+            1.7,
+            2.0
+          ]
+        }
+      ],
+      "notes": "Animate bars left-to-right; call out enterprise acceleration.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "title": "Net retention cohort curve",
+      "subtitle": "Trailing twelve months · logo cohort FY23",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "M3",
+        "M6",
+        "M9",
+        "M12",
+        "M15",
+        "M18"
+      ],
+      "chart_series": [
+        {
+          "name": "NRR %",
+          "values": [
+            108.0,
+            115.0,
+            121.0,
+            127.0,
+            129.0,
+            131.0
+          ]
+        },
+        {
+          "name": "Expansion ARR indexed",
+          "values": [
+            100.0,
+            118.0,
+            132.0,
+            148.0,
+            154.0,
+            159.0
+          ]
+        }
+      ],
+      "notes": "Emphasize stabilization post Month 12.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Segment wedges",
+      "subtitle": null,
+      "bullets": [
+        "Retail grocery chains adopting endless aisle orchestration (+42% YoY logos)",
+        "Industrial distributors syncing ERP ATP signals nightly",
+        "Marketplaces consolidating payouts through layered PSP adapters",
+        "Healthcare GPO pilots held on compliance review (timeline: H2)"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Solution architecture",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "1D4ED8",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Control plane vs data plane",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Routing: global policy engine + circuit breakers",
+        "Tenancy: shard maps + blast isolation budgets",
+        "Release: progressive exposure + synthetic probes",
+        "Secrets: KMS envelopes per region pair"
+      ],
+      "bullets_right": [
+        "Checkout hot path microservices only",
+        "Fulfillment adapters behind bulkheads",
+        "Observability: RED metrics per bounded context",
+        "Replay journals for settlement discrepancies"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Differentiators",
+      "subtitle": null,
+      "bullets": [
+        "Native GraphQL federation + declarative storefront schemas",
+        "Edge SSR cache keyed by personalization cohort hash",
+        "Built-in experimentation hooks without checkout regressions",
+        "SOC2 Type II + PCI DSS SAQ-D roadmap packaged"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "title": "Latency reduction program",
+      "subtitle": "p95 checkout · milliseconds",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Baseline",
+        "Wave A",
+        "Wave B",
+        "Wave C"
+      ],
+      "chart_series": [
+        {
+          "name": "Mobile web",
+          "values": [
+            980.0,
+            720.0,
+            540.0,
+            410.0
+          ]
+        },
+        {
+          "name": "Desktop",
+          "values": [
+            620.0,
+            480.0,
+            390.0,
+            310.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "quote",
+      "title": null,
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": "Latency is the silent churn lever nobody invoices.",
+      "attribution": "Field CTO diary",
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Pause beat — room calibration.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Go-to-market plays",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "1D4ED8",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "FY26 campaigns",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Northstar lighthouse rev share + exec briefing cadence",
+        "Embedded Solutions Engineer pods per strategic logo",
+        "Partner certifications refreshed quarterly",
+        "Regional exec dinners paired with architecture studios"
+      ],
+      "bullets_right": [
+        "Hands-on sandbox clusters auto-teardown nightly",
+        "ROI simulator worksheet packaged with AE toolkit",
+        "Self-serve SKU ladder simplified (Starter anchor skew)",
+        "Community hack weekends co-hosted with GSIs"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Pricing snapshot",
+      "subtitle": null,
+      "bullets": [
+        "Platform fee stepping down after $50M GMV processed annually",
+        "Burst overage pooled across child stores (franchise friendly)",
+        "Premium support: named TAM + Slack bridge with SRE rotator",
+        "Optional white-glove migrations priced as fixed phases (scoping worksheet v3)"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "title": "Win rate vs technical eval depth",
+      "subtitle": "Opportunities closed-won FY25 · %",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "1 workshop",
+        "2 workshops",
+        "POC",
+        "POC + perf",
+        "POC + security"
+      ],
+      "chart_series": [
+        {
+          "name": "Win rate",
+          "values": [
+            22.0,
+            31.0,
+            44.0,
+            58.0,
+            67.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Execution risks",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "1D4ED8",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "What could break the plan",
+      "subtitle": null,
+      "bullets": [
+        "PSP routing changes in EU regulatory pilots (watch EBA drafts weekly)",
+        "Long-running ERP cutover weekends colliding with Black Friday freeze",
+        "GPU-adjacent personalization features inflating edge COGS if unbounded",
+        "Channel conflict if marketplace partnerships outpace direct coverage maps"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Mitigations",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Exec war-room cadence during freeze windows",
+        "Playbooks for PSP rollback + shadow traffic mode",
+        "COGS guardrails on personalization compute burst"
+      ],
+      "bullets_right": [
+        "Territory pairing rules refreshed each quarter",
+        "Customer advisory board gate for roadmap commitments",
+        "Partner scorecards published internally monthly"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Customer proof & expansion",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "1D4ED8",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Logo highlights FY25",
+      "subtitle": null,
+      "bullets": [
+        "Three global grocers live on unified catalog + endless aisle orchestration",
+        "Two industrial distributors exposing ATP APIs to storefront experiments",
+        "One marketplace migrated PSP routing without weekend downtime",
+        "Healthcare GPO sandbox awaiting IRB clearance for PHI-light feeds"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Land → expand motions",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Land: sandbox parity checklist + SSO bake-off scripts",
+        "Land: ROI worksheet tied to SKU throughput assumptions",
+        "Land: exec sponsor alignment memo template"
+      ],
+      "bullets_right": [
+        "Expand: experimentation tier unlock post-NRR checkpoint",
+        "Expand: franchise analytics tenant rollup dashboards",
+        "Expand: GSIs embedding Solutions Engineer pods quarterly"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "title": "Expansion ARR · $M cum.",
+      "subtitle": "Within Year 1 of first production traffic",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "chart_series": [
+        {
+          "name": "Retail",
+          "values": [
+            0.9,
+            2.1,
+            3.8,
+            5.6
+          ]
+        },
+        {
+          "name": "Industrial",
+          "values": [
+            0.7,
+            1.6,
+            2.9,
+            4.2
+          ]
+        },
+        {
+          "name": "Marketplaces",
+          "values": [
+            1.2,
+            2.4,
+            3.7,
+            5.1
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Professional services overlay",
+      "subtitle": null,
+      "bullets": [
+        "Migration factory templates reduced median cutover window from 14 → 9 weekends",
+        "Executive training simulator packaged as SCORM + embedded analytics hooks",
+        "Partner certification tracks refreshed after SDK major version bump",
+        "Paid architecture studios capped at six concurrent global engagements"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "title": "Support ticket severity mix",
+      "subtitle": "% of tickets · rolling 90d",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      "chart_series": [
+        {
+          "name": "Sev1",
+          "values": [
+            4.1,
+            3.8,
+            3.2,
+            2.9,
+            2.6,
+            2.4
+          ]
+        },
+        {
+          "name": "Sev2",
+          "values": [
+            18.0,
+            17.2,
+            16.5,
+            15.9,
+            15.2,
+            14.8
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Product analytics instrumentation",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Checkout funnel spans unified trace IDs across edge + origin",
+        "Feature flags audited nightly against experimentation registry",
+        "Synthetic probes cover top 40 merchant SKU bundles"
+      ],
+      "bullets_right": [
+        "Replay snapshots scrubbed before leaving tenant boundary",
+        "Dashboards embedded in Salesforce opportunity stages",
+        "On-call paging thresholds tuned per merchant tier"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "quote",
+      "title": null,
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": "Ship the narrative with the numbers tied to bones, not slogans.",
+      "attribution": "Closing guidance",
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Next steps",
+      "subtitle": null,
+      "bullets": [
+        "Book three lighthouse design critiques (pick from shortlist)",
+        "Confirm legal redlines on data processing addendum by EOM",
+        "Align QBR storyline with freshly locked financial model v4.2"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Assign DRI per bullet before leaving room.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    }
+  ],
+  "$schema": "../../schemas/deck.schema.json"
+}

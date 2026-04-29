@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/deck.schema.json",
-  "title": "Quarterly Review",
+  "title": "Quarterly Review · 2026-04-28 22:52",
   "subtitle": "FY26 Q1",
   "author": "ZPresenter demo",
   "audience": {
@@ -10,9 +10,17 @@
   "slides": [
     {
       "layout": "title",
-      "title": "Quarterly Review",
+      "title": "Quarterly Review · 2026-04-28 22:52",
       "subtitle": "FY26 Q1",
-      "notes": "Open with agenda timing."
+      "notes": "Open with agenda timing.",
+      "images": [
+        {
+          "src": "assets/quarterly-banner.png",
+          "placement": "banner_lower",
+          "context": "Quarterly theme banner — reinforces FY branding without cluttering headline.",
+          "caption": "FY narrative accent"
+        }
+      ]
     },
     {
       "layout": "section",
@@ -27,7 +35,15 @@
         "Costs tracked weekly",
         "Focus areas clear"
       ],
-      "notes": "Keep bullets spoken short."
+      "notes": "Keep bullets spoken short.",
+      "images": [
+        {
+          "src": "assets/split-insight.png",
+          "placement": "primary_right",
+          "context": "Visual metaphor for trajectory — pairs with KPI bullets on the left.",
+          "caption": "Performance pulse"
+        }
+      ]
     },
     {
       "layout": "quote",

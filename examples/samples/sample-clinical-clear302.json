@@ -1,0 +1,800 @@
+{
+  "title": "CLEAR-302 outcomes programme · 2026-04-28 22:52",
+  "subtitle": "Clinical showcase deck",
+  "author": "ZPresenter samples",
+  "audience": {
+    "technical_level": "executive",
+    "attention_span": "short"
+  },
+  "theme": {
+    "primary_hex": "0F766E",
+    "accent_hex": "D97706",
+    "muted_hex": null
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "title": "CLEAR-302 outcomes programme · 2026-04-28 22:52",
+      "subtitle": "Phase III interim · efficacy · safety · operational readiness",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Audience: sponsor steering committee — stick to slide timings.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Trial posture",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "0F766E",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Study synopsis",
+      "subtitle": null,
+      "bullets": [
+        "Randomized, double-blind, placebo-controlled multicenter trial (n=1,842)",
+        "Primary endpoint: sustained responder rate at Week 24 (central reads)",
+        "Key secondary: biomarker suppression score delta vs baseline",
+        "Safety surveillance intensity escalated after interim DSMB charter revision"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Population ingress criteria",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Adults 18–75 with diagnostic Grade II–III severity",
+        "Washout windows enforced per protocol Amendment 4",
+        "Stable background meds documented ≥90 days prior",
+        "HbA1c corridor eligibility unchanged vs CLEAR-215"
+      ],
+      "bullets_right": [
+        "Exclude active malignancy within 24 months",
+        "Exclude transplant recipients",
+        "Exclude concurrent investigational agents",
+        "Exclude QT prolongation beyond protocol thresholds"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "title": "Enrollment velocity · subjects / month",
+      "subtitle": "Sites activated vs screened",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun"
+      ],
+      "chart_series": [
+        {
+          "name": "Activated sites",
+          "values": [
+            12.0,
+            18.0,
+            24.0,
+            31.0,
+            36.0,
+            41.0
+          ]
+        },
+        {
+          "name": "Screened subjects",
+          "values": [
+            44.0,
+            71.0,
+            103.0,
+            138.0,
+            164.0,
+            188.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Efficacy signals",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "0F766E",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "title": "Responder trajectory · central reads",
+      "subtitle": "ITT population · % achieving threshold",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Week 4",
+        "Week 8",
+        "Week 12",
+        "Week 16",
+        "Week 20",
+        "Week 24"
+      ],
+      "chart_series": [
+        {
+          "name": "Arm A",
+          "values": [
+            18.0,
+            31.0,
+            42.0,
+            48.0,
+            53.0,
+            57.0
+          ]
+        },
+        {
+          "name": "Arm B",
+          "values": [
+            11.0,
+            19.0,
+            26.0,
+            31.0,
+            34.0,
+            36.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Biomarker narrative",
+      "subtitle": null,
+      "bullets": [
+        "Median hs-CRP reduction −38% vs −12% placebo (exploratory hierarchy preserved)",
+        "Protein signature panel trending toward pre-specified composite",
+        "Subgroup forest: consistency across geography except APAC enrollment lag"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Sensitivity analyses",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Per-protocol set: directional alignment with ITT",
+        "Missing at random sensitivity: tipping point tables updated",
+        "Multiple imputation scenario C: marginal effect attenuation ≤1.2 pp"
+      ],
+      "bullets_right": [
+        "COVID-era site pause stratum: attenuation noted (pre-registered)",
+        "Stratification by baseline severity bucket: HR still favorable",
+        "Interim look alpha spend within O'Brien-Fleming boundaries"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Safety",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "0F766E",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "title": "TEAE incidence · % of subjects",
+      "subtitle": "Treatment emergent · relatedness adjudicated",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "GI",
+        "Renal",
+        "Hepatic",
+        "Cardio",
+        "Neuro"
+      ],
+      "chart_series": [
+        {
+          "name": "Arm A",
+          "values": [
+            12.4,
+            3.1,
+            2.2,
+            4.0,
+            1.5
+          ]
+        },
+        {
+          "name": "Placebo",
+          "values": [
+            10.9,
+            2.8,
+            1.9,
+            3.6,
+            1.7
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Adjudicated SAE narrative",
+      "subtitle": null,
+      "bullets": [
+        "Two SAE clusters reviewed by blinded neurology council (resolved per protocol)",
+        "No imbalance in QTcF beyond prespecified surveillance grid",
+        "Hepatic signal flat vs internal historical control deck"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Exploratory pharmacokinetics",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "0F766E",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "title": "Serum trough concentrations",
+      "subtitle": "μg/mL · sparse sampling windows",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Week 2",
+        "Week 4",
+        "Week 8",
+        "Week 12",
+        "Week 16"
+      ],
+      "chart_series": [
+        {
+          "name": "Arm A median",
+          "values": [
+            42.0,
+            51.0,
+            58.0,
+            61.0,
+            63.0
+          ]
+        },
+        {
+          "name": "Arm B median",
+          "values": [
+            39.0,
+            46.0,
+            52.0,
+            54.0,
+            55.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "PK/PD translation",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Exposure-response models stable across weight quartiles",
+        "Food effect analysis negligible vs prespecified MCID band",
+        "Renally impaired cohort bridging simulation approved"
+      ],
+      "bullets_right": [
+        "Pediatric bridging deferred until adult DBL locked",
+        "DDI grid green except strong CYP3A4 inhibitors (boxed)",
+        "Impurity specs tightened post-lot retrospective review"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "title": "Immunogenicity titre · ADA % positive",
+      "subtitle": "Central lab · cumulative",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Baseline",
+        "Week 8",
+        "Week 16",
+        "Week 24"
+      ],
+      "chart_series": [
+        {
+          "name": "Treatment emergent ADA",
+          "values": [
+            3.2,
+            5.1,
+            6.8,
+            7.9
+          ]
+        },
+        {
+          "name": "Neutralizing subset",
+          "values": [
+            0.8,
+            1.4,
+            2.1,
+            2.6
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Subgroup interplay (exploratory)",
+      "subtitle": null,
+      "bullets": [
+        "Age ≥65 shows attenuated responder delta — hypothesis generating only",
+        "Baseline biomarker tertiles preserve directional HR across regions",
+        "Prior biologic exposure stratum requires Phase IV commitment language"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Label negotiation hooks",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Responder definition anchored on Week 24 threshold copy",
+        "Biomarker language contingent on SPA biomarker cohort lock",
+        "Pediatric carve-out referencing deferred PIP milestones"
+      ],
+      "bullets_right": [
+        "Safety tables harmonized across CSR + IB appendices",
+        "SMPC-ready narratives drafted for EU linguists",
+        "JP-HA briefing deck rehearsed with local medical affairs partner"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "title": "Site activation trajectory",
+      "subtitle": "Countries live · cumulative",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "chart_series": [
+        {
+          "name": "Countries",
+          "values": [
+            6.0,
+            11.0,
+            17.0,
+            22.0,
+            26.0,
+            29.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "quote",
+      "title": null,
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": "Every beautiful chart still defers to the safety table's footnotes.",
+      "attribution": "Medical monitor standup",
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Operational readiness",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "0F766E",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Site quality levers",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Remote SDV spot checks + risk-based triggers",
+        "Central lab kit traceability dashboards",
+        "Temperature excursion playbooks refreshed"
+      ],
+      "bullets_right": [
+        "ePRO adherence nudges via localized SMS tone tests",
+        "Recruitment diversity scorecard in monthly ops review",
+        "Unblinded pharmacovigilance bridge during weekend on-call rotations"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "title": "Query resolution turnaround",
+      "subtitle": "Median days · target line 5d",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun"
+      ],
+      "chart_series": [
+        {
+          "name": "Median days to close",
+          "values": [
+            6.2,
+            5.8,
+            5.1,
+            4.9,
+            4.6,
+            4.4
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Regulatory correspondence",
+      "subtitle": null,
+      "bullets": [
+        "Type II meeting packet drafting ahead of SPA renewal checkpoint",
+        "Label negotiation contingent on biomarker supplemental cohort alignment",
+        "Europe pediatric investigative plan threaded separately (PIP milestones)"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Investment thesis recap",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "0F766E",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Board asks vs sponsor commitments",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Approve incremental DSMB observer budget line",
+        "Unlock Phase IIIb exploratory dermatology cohort budget envelope",
+        "Fast-track pharmacometrics hiring req (#LM-441)"
+      ],
+      "bullets_right": [
+        "Deliver interim CSR skeleton within 45 days post DBL draft",
+        "Publish responder algorithm pseudocode openly post-readout",
+        "Freeze ancillary endpoints lab definitions prior to Week 36 snapshot"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Timeline checkpoints",
+      "subtitle": null,
+      "bullets": [
+        "Week 28: interim biomarker composite lock",
+        "Week 36: DSMB memorandum expected read-through",
+        "Week 44: CSR narrative sprint + disclosure scrub parallel track"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "quote",
+      "title": null,
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": "Evidence wins rooms when humility sits beside significance.",
+      "attribution": "Steering committee charter",
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    }
+  ],
+  "$schema": "../../schemas/deck.schema.json"
+}

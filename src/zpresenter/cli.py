@@ -12,6 +12,7 @@ from rich.table import Table
 
 from zpresenter.audience import Severity, analyze_deck, summarize_findings
 from zpresenter.builder import build_presentation, save_presentation
+from zpresenter.iconography import describe_icon, list_icon_ids, search_icons
 from zpresenter.models import Deck, deck_json_schema, parse_deck_json
 from zpresenter.template_inspect import describe_slide_layouts
 
@@ -20,6 +21,77 @@ app = typer.Typer(
     help="Build audience-aware presentations from structured decks.",
 )
 console = Console()
+
+icons_app = typer.Typer(
+    no_args_is_help=True,
+    help="Browse semantic icon IDs for title_icon and bullet_icons fields.",
+)
+
+
+@icons_app.command("list")
+def icons_list_command(
+    category: str | None = typer.Option(
+        None,
+        "--category",
+        "-c",
+        help="Only icons in this category (e.g. data, security).",
+    ),
+) -> None:
+    """List catalog icon IDs with glyph and tags."""
+    ids = list_icon_ids(category=category)
+    if not ids:
+        console.print("[yellow]No icons match this filter.[/yellow]")
+        raise typer.Exit(0)
+
+    table = Table(show_header=True)
+    table.add_column("id", style="bold")
+    table.add_column("Char", justify="center")
+    table.add_column("category")
+    table.add_column("tags")
+    for iid in ids:
+        meta = describe_icon(iid)
+        if meta is None:
+            continue
+        table.add_row(iid, meta["char"], meta["category"], ", ".join(meta["tags"]))
+    console.print(table)
+    console.print(f"\n[dim]{len(ids)} icon(s)[/dim]")
+
+
+@icons_app.command("search")
+def icons_search_command(
+    query: str = typer.Argument(..., help="Substring match on id, category, or tags."),
+) -> None:
+    """Search the icon catalog."""
+    ids = search_icons(query)
+    if not ids:
+        console.print("[yellow]No matches.[/yellow]")
+        raise typer.Exit(0)
+
+    table = Table(show_header=True)
+    table.add_column("id", style="bold")
+    table.add_column("Char", justify="center")
+    table.add_column("category")
+    for iid in ids:
+        meta = describe_icon(iid)
+        if meta is None:
+            continue
+        table.add_row(iid, meta["char"], meta["category"])
+    console.print(table)
+    console.print(f"\n[dim]{len(ids)} match(es)[/dim]")
+
+
+@icons_app.command("show")
+def icons_show_command(
+    icon_id: str = typer.Argument(..., help="Exact catalog id, e.g. data.chart."),
+) -> None:
+    """Show one icon entry."""
+    meta = describe_icon(icon_id)
+    if meta is None:
+        console.print(f"[red]Unknown id:[/red] {icon_id}")
+        raise typer.Exit(1)
+    console.print(f"[bold]{icon_id}[/bold]  {meta['char']}")
+    console.print(f"category: {meta['category']}")
+    console.print(f"tags: {', '.join(meta['tags'])}")
 
 
 def _load_deck(deck_path: Path) -> Deck:
@@ -33,7 +105,7 @@ def check_command(
 ) -> None:
     """Analyze a deck JSON for clarity and pacing issues."""
     deck = _load_deck(deck_path)
-    findings = analyze_deck(deck)
+    findings = analyze_deck(deck, deck_path=deck_path)
     err, warn, info = summarize_findings(findings)
     console.print(f"[bold]{deck.title}[/bold] - findings: error={err}, warn={warn}, info={info}\n")
 
@@ -76,7 +148,7 @@ def build_command(
     """Render deck JSON to a PowerPoint file."""
     deck = _load_deck(deck_path)
 
-    findings = analyze_deck(deck)
+    findings = analyze_deck(deck, deck_path=deck_path)
     err, warn, _info = summarize_findings(findings)
     if err > 0 and not skip_check:
         console.print(
@@ -86,7 +158,7 @@ def build_command(
     if warn > 0:
         console.print(f"[yellow]Warning:[/yellow] {warn} audience warning(s); continuing.")
 
-    prs = build_presentation(deck)
+    prs = build_presentation(deck, asset_root=deck_path.parent)
     save_presentation(prs, out_path)
     console.print(f"[green]Wrote[/green] {out_path.resolve()}")
 
@@ -147,6 +219,9 @@ def list_layouts_command(
     console.print(table)
     master_ct = len(prs.slide_masters)
     console.print(f"\n[dim]{len(rows)} layout(s) across {master_ct} master(s)[/dim]")
+
+
+app.add_typer(icons_app, name="icons")
 
 
 def main() -> None:

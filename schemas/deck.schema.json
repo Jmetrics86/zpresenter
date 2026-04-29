@@ -27,6 +27,76 @@
       "title": "AudienceProfile",
       "type": "object"
     },
+    "ChartSeries": {
+      "description": "One named series aligned by index with chart_categories.",
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "values"
+      ],
+      "title": "ChartSeries",
+      "type": "object"
+    },
+    "DeckTheme": {
+      "description": "Optional hex accents — applied to section titles and slides that opt in.",
+      "properties": {
+        "primary_hex": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "RRGGBB section title accent",
+          "title": "Primary Hex"
+        },
+        "accent_hex": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "RRGGBB secondary accent",
+          "title": "Accent Hex"
+        },
+        "muted_hex": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "RRGGBB for subtitles, captions, and secondary lines (defaults to slate if omitted).",
+          "title": "Muted Hex"
+        }
+      },
+      "title": "DeckTheme",
+      "type": "object"
+    },
     "Slide": {
       "description": "One slide with layout-specific optional fields.",
       "properties": {
@@ -35,7 +105,10 @@
             "title",
             "title_content",
             "section",
-            "quote"
+            "quote",
+            "chart_bar",
+            "chart_line",
+            "two_column"
           ],
           "title": "Layout",
           "type": "string"
@@ -79,6 +152,36 @@
           "default": null,
           "title": "Bullets"
         },
+        "bullets_left": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bullets Left"
+        },
+        "bullets_right": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bullets Right"
+        },
         "quote": {
           "anyOf": [
             {
@@ -103,6 +206,36 @@
           "default": null,
           "title": "Attribution"
         },
+        "chart_categories": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Chart Categories"
+        },
+        "chart_series": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/ChartSeries"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Chart Series"
+        },
         "notes": {
           "anyOf": [
             {
@@ -114,12 +247,173 @@
           ],
           "default": null,
           "title": "Notes"
+        },
+        "title_color_hex": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional RRGGBB for slide headline",
+          "title": "Title Color Hex"
+        },
+        "title_icon": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Catalog icon id prepended to titles where supported (see zpresenter icons list).",
+          "title": "Title Icon"
+        },
+        "bullet_icons": {
+          "anyOf": [
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Parallel to bullets — catalog icon id or null per bullet.",
+          "title": "Bullet Icons"
+        },
+        "bullets_left_icons": {
+          "anyOf": [
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bullets Left Icons"
+        },
+        "bullets_right_icons": {
+          "anyOf": [
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bullets Right Icons"
+        },
+        "images": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/SlideImage"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Embedded images — placement selects on-slide slot for this layout.",
+          "title": "Images"
         }
       },
       "required": [
         "layout"
       ],
       "title": "Slide",
+      "type": "object"
+    },
+    "SlideImage": {
+      "description": "Raster image referenced by path (relative to deck JSON dir), absolute path, or https URL.",
+      "properties": {
+        "src": {
+          "minLength": 1,
+          "title": "Src",
+          "type": "string"
+        },
+        "placement": {
+          "default": "primary_right",
+          "enum": [
+            "primary_right",
+            "primary_below",
+            "accent_corner",
+            "banner_lower",
+            "two_column_span_below"
+          ],
+          "title": "Placement",
+          "type": "string"
+        },
+        "caption": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Caption"
+        },
+        "context": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional semantic hint for authoring or tooling (not shown on-slide).",
+          "title": "Context"
+        }
+      },
+      "required": [
+        "src"
+      ],
+      "title": "SlideImage",
       "type": "object"
     }
   },
@@ -156,6 +450,17 @@
     },
     "audience": {
       "$ref": "#/$defs/AudienceProfile"
+    },
+    "theme": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DeckTheme"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     },
     "slides": {
       "items": {

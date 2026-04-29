@@ -1,0 +1,856 @@
+{
+  "title": "Nova Design System · audit · 2026-04-28 22:52",
+  "subtitle": "Design ops showcase",
+  "author": "ZPresenter samples",
+  "audience": {
+    "technical_level": "general",
+    "attention_span": "medium"
+  },
+  "theme": {
+    "primary_hex": "6D28D9",
+    "accent_hex": "DB2777",
+    "muted_hex": null
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "title": "Nova Design System · 2026-04-28 22:52",
+      "subtitle": "FY26 maturity audit · accessibility · governance flywheel",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Designer-heavy audience — emphasize tokens + measurement loops.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "North Star metrics",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "6D28D9",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Why measure systems not screens",
+      "subtitle": null,
+      "bullets": [
+        "Fragmented UI libraries inflate QA drag faster than headcount curves",
+        "Accessibility debt compounds silently until procurement audits bite",
+        "Brand elasticity constrained when semantic layers drift from tokens",
+        "Storybook adoption plateau signals governance fatigue — not tooling gaps"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Signals vs noise",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Token drift sprint burndowns trending upward again",
+        "Design bug age in Jira creeping past 45d median",
+        "Figma library publish cadence slowing (weekly → biweekly)",
+        "Color-contrast regressions clustered in marketing microsites"
+      ],
+      "bullets_right": [
+        "Engineering handoff rework hours per feature stable",
+        "Component reuse index up 6pts across mobile surfaces",
+        "Lighthouse accessibility score p90 above 92 for core app",
+        "Brand NPS unaffected (no customer perception signal yet)"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "title": "Design-debt backlog age",
+      "subtitle": "Median days open · by swimlane",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Foundations",
+        "Patterns",
+        "Content",
+        "Brand",
+        "Research"
+      ],
+      "chart_series": [
+        {
+          "name": "Q1 snapshot",
+          "values": [
+            38.0,
+            44.0,
+            52.0,
+            61.0,
+            28.0
+          ]
+        },
+        {
+          "name": "Current",
+          "values": [
+            29.0,
+            35.0,
+            40.0,
+            48.0,
+            22.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Accessibility program",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "6D28D9",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "title": "WCAG violation burn-down",
+      "subtitle": "Critical + serious · backlog count",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5",
+        "W6"
+      ],
+      "chart_series": [
+        {
+          "name": "Web",
+          "values": [
+            118.0,
+            96.0,
+            74.0,
+            59.0,
+            48.0,
+            41.0
+          ]
+        },
+        {
+          "name": "Mobile",
+          "values": [
+            86.0,
+            72.0,
+            61.0,
+            54.0,
+            47.0,
+            43.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Program pillars",
+      "subtitle": null,
+      "bullets": [
+        "Shift-left linting inside Figma tokens + code export pipeline",
+        "Paired audits with CX research for real device matrix coverage",
+        "Escalation path when marketing pages bypass CMS components",
+        "Quarterly storytelling for executive design council (not just dashboards)"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Governance model",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "RFC lightweight template embedded in Slack workflow",
+        "Design council quorum rotation quarterly",
+        "Breaking-change calendar synced with mobile release trains",
+        "Deprecation banners wired via CMS metadata hooks"
+      ],
+      "bullets_right": [
+        "Contribution ladder refreshed with mentorship pairing",
+        "Office hours staffed rotating Design Tech leads",
+        "Dogfood sandbox pinned to staging CDN snapshots nightly",
+        "Budget carve-out for tooling parity laptop fleet renewal"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "quote",
+      "title": null,
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": "Consistency is kindness scaled.",
+      "attribution": "Nova DS principles",
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Brand palette hygiene",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "6D28D9",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "title": "Off-brand hex usage incidents",
+      "subtitle": "Weekly violations detected · automated crawl",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Marketing",
+        "Docs",
+        "Blog",
+        "Support",
+        "Community"
+      ],
+      "chart_series": [
+        {
+          "name": "Violations",
+          "values": [
+            22.0,
+            11.0,
+            18.0,
+            9.0,
+            31.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Palette drift hotspots",
+      "subtitle": null,
+      "bullets": [
+        "Partner microsites importing deprecated emerald accent (#34D399)",
+        "Documentation screenshots stale vs prod chrome tint drift",
+        "Community hackathon repos skipping lint pipeline entirely"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Remediation playbook",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Sweep scripts tagging rogue hex codes nightly",
+        "Story-wide lint blocking merges when severity critical",
+        "Designer pairing slots Thursdays for retrofit backlog"
+      ],
+      "bullets_right": [
+        "Marketing CMS clamp enforcing palette subsets only",
+        "Screenshot harness regenerated via CI nightly crawl",
+        "Office-hours backlog grooming alternating EU/US friendly slots"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Partner ecosystem fit",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "6D28D9",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Systems integrator alignment",
+      "subtitle": null,
+      "bullets": [
+        "GSIs standardized on Nova tokens package v17 — divergence tracked weekly",
+        "Reference storefront repos pinned to semver minors only during freeze windows",
+        "Partner-built widgets audited via automated DOM snapshot regression packs",
+        "Sandbox tenancy quotas negotiated before FY26 renewal packets ship"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Training & certification ladder",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Foundational tier: tokens + semantic HTML checkpoints",
+        "Advanced tier: motion choreography + accessibility pairing labs",
+        "Architect tier: cross-brand customization governance simulations"
+      ],
+      "bullets_right": [
+        "Exam integrity monitored via randomized Storybook mutation suites",
+        "Certificates expire annually unless refresher quizzes ≥85%",
+        "Partner badges surfaced publicly through verified CDN issuer profiles"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "title": "Partner build throughput",
+      "subtitle": "Story points merged · normalized · quarterly",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ],
+      "chart_series": [
+        {
+          "name": "Tier-1 SI",
+          "values": [
+            880.0,
+            920.0,
+            970.0,
+            1040.0
+          ]
+        },
+        {
+          "name": "Emerging SI",
+          "values": [
+            410.0,
+            460.0,
+            510.0,
+            560.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Roadmap choreography",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "6D28D9",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "title": "Adoption ladder · composite score",
+      "subtitle": "Weighted components · rolling",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "T0",
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5"
+      ],
+      "chart_series": [
+        {
+          "name": "Score",
+          "values": [
+            41.0,
+            48.0,
+            54.0,
+            61.0,
+            67.0,
+            73.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Quarterly bets",
+      "subtitle": null,
+      "bullets": [
+        "Motion primitives tier-1 parity across React Native surfaces",
+        "Data viz palette harmonization with Finance dashboards",
+        "Localized type scale experiments in DE + JP pilot tenants",
+        "Experimental dark mode token set behind feature gate (opt-in cohorts)"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Risks & dependencies",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Headcount freeze on contractor design technologists",
+        "Figma enterprise contract renegotiation window",
+        "Cross-platform font licensing renewal in Q3"
+      ],
+      "bullets_right": [
+        "Dependent on mobile monorepo upgrade train #M-19",
+        "Brand team campaign lock-in may override token freeze window",
+        "Accessibility counsel review SLAs lengthening to 9d median"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "title": "Motion & content ops",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "6D28D9",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Interaction choreography backlog",
+      "subtitle": null,
+      "bullets": [
+        "Micro-interaction backlog prioritized via CX friction replay clips",
+        "Latency-sensitive easing curves capped per WCAG motion preference hooks",
+        "Locale-aware durations enforced via regression snapshots per locale pack",
+        "Reduced-motion parity QA gates wired into CI smoke suites nightly"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Content design throughput",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Copy decks routed through centralized terminology glossary",
+        "AI-assisted drafts flagged until human editorial stamp applied",
+        "Localization budgets gated behind glossary completeness scores"
+      ],
+      "bullets_right": [
+        "Markdown ingestion lint catches inaccessible emoji clusters",
+        "Release calendar synced with CMS embargo slots across locales",
+        "Voice tone audits sampled quarterly via stratified ticket pulls"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "title": "Localization defect backlog",
+      "subtitle": "Median age · days · by severity tier",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "SEV3",
+        "SEV2",
+        "SEV1"
+      ],
+      "chart_series": [
+        {
+          "name": "Desktop app",
+          "values": [
+            21.0,
+            14.0,
+            9.0
+          ]
+        },
+        {
+          "name": "Mobile app",
+          "values": [
+            27.0,
+            18.0,
+            11.0
+          ]
+        },
+        {
+          "name": "Marketing web",
+          "values": [
+            33.0,
+            22.0,
+            14.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "title": "Design QA throughput",
+      "subtitle": "Stories merged · weekly · normalized",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Wk40",
+        "Wk41",
+        "Wk42",
+        "Wk43",
+        "Wk44",
+        "Wk45"
+      ],
+      "chart_series": [
+        {
+          "name": "Merged stories",
+          "values": [
+            118.0,
+            126.0,
+            129.0,
+            134.0,
+            139.0,
+            143.0
+          ]
+        },
+        {
+          "name": "Rework loops",
+          "values": [
+            22.0,
+            21.0,
+            19.0,
+            18.0,
+            17.0,
+            16.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "title": "Experimentation ethics guardrails",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Exposure budgets capped per cohort shard hash",
+        "Explicit consent banners mirrored across SDK surfaces",
+        "Kill-switch rehearsals staged quarterly with incident command roles"
+      ],
+      "bullets_right": [
+        "Psychologically sensitive cohorts excluded by policy registry",
+        "Dark-pattern scanners fed screenshot hashes nightly",
+        "Executive dashboards scrub PIIs before UX council reviews"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "quote",
+      "title": null,
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": "Governance without empathy ships bureaucracy.",
+      "attribution": "Nova guild retro notes",
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "title": "Closing commitments",
+      "subtitle": null,
+      "bullets": [
+        "Publish maturity scorecard externally by end of quarter (transparency pledge)",
+        "Anchor next executive readout on customer-reported friction deltas, not vanity ADP",
+        "Fund dedicated a11y pairing budget line (Finance pre-approval secured)"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    }
+  ],
+  "$schema": "../../schemas/deck.schema.json"
+}

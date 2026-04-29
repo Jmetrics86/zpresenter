@@ -3,10 +3,13 @@
 from __future__ import annotations
 
 from enum import StrEnum
+from pathlib import Path
 
 from pydantic import BaseModel
 
-from zpresenter.models import AudienceProfile, Deck
+from zpresenter.iconography import resolve_icon
+from zpresenter.media import local_path_exists
+from zpresenter.models import AudienceProfile, Deck, Slide
 
 
 class Severity(StrEnum):
@@ -36,7 +39,105 @@ def _limits(profile: AudienceProfile) -> dict[str, int]:
     return base
 
 
-def analyze_deck(deck: Deck) -> list[Finding]:
+def _bullet_findings(
+    slide_index: int,
+    bullets: list[str],
+    limits: dict[str, int],
+    *,
+    scope: str = "",
+) -> list[Finding]:
+    findings: list[Finding] = []
+    if len(bullets) > limits["max_bullets"]:
+        if scope:
+            msg = f"{scope} has {len(bullets)} bullets (limit ~{limits['max_bullets']} per column)."
+        else:
+            msg = (
+                f"Slide has {len(bullets)} bullets "
+                f"(limit ~{limits['max_bullets']} for this audience)."
+            )
+        findings.append(
+            Finding(
+                severity=Severity.warn,
+                slide_index=slide_index,
+                message=msg,
+                suggestion="Split into another slide or promote details to speaker notes.",
+            )
+        )
+    for j, bullet in enumerate(bullets):
+        if len(bullet) > limits["max_bullet_chars"]:
+            prefix = f"{scope} bullet {j + 1}" if scope else f"Bullet {j + 1}"
+            findings.append(
+                Finding(
+                    severity=Severity.info,
+                    slide_index=slide_index,
+                    message=f"{prefix} is long ({len(bullet)} chars).",
+                    suggestion="Shorten or move nuance to speaker notes.",
+                )
+            )
+        if not bullet.strip():
+            findings.append(
+                Finding(
+                    severity=Severity.warn,
+                    slide_index=slide_index,
+                    message=f"{scope}: empty bullet" if scope else "Empty bullet detected.",
+                    suggestion="Remove empty bullets.",
+                )
+            )
+    return findings
+
+
+def _warn_unknown_icon(slide_index: int, icon_id: str, label: str) -> Finding:
+    return Finding(
+        severity=Severity.warn,
+        slide_index=slide_index,
+        message=f'Unknown icon id "{icon_id}" ({label}).',
+        suggestion="Run `zpresenter icons search` or `zpresenter icons list`.",
+    )
+
+
+def _icon_findings(slide: Slide, slide_index: int) -> list[Finding]:
+    out: list[Finding] = []
+
+    tid = slide.title_icon
+    if tid and tid.strip() and resolve_icon(tid) is None:
+        out.append(_warn_unknown_icon(slide_index, tid.strip(), "title_icon"))
+
+    def parallel(ids: list[str | None] | None, label: str) -> None:
+        if not ids:
+            return
+        for j, iid in enumerate(ids):
+            if iid is None or not str(iid).strip():
+                continue
+            if resolve_icon(iid) is None:
+                out.append(_warn_unknown_icon(slide_index, str(iid).strip(), f"{label}[{j}]"))
+
+    parallel(slide.bullet_icons, "bullet_icons")
+    parallel(slide.bullets_left_icons, "bullets_left_icons")
+    parallel(slide.bullets_right_icons, "bullets_right_icons")
+    return out
+
+
+def _media_findings(slide: Slide, slide_index: int, deck_dir: Path | None) -> list[Finding]:
+    if deck_dir is None:
+        return []
+    out: list[Finding] = []
+    for j, img in enumerate(slide.images or []):
+        src = img.src.strip()
+        if src.startswith("http://") or src.startswith("https://"):
+            continue
+        if not local_path_exists(img.src, deck_dir):
+            out.append(
+                Finding(
+                    severity=Severity.warn,
+                    slide_index=slide_index,
+                    message=f'Missing image file for images[{j}] ({img.src}).',
+                    suggestion="Place the asset beside the deck JSON or pass paths relative to that file.",
+                )
+            )
+    return out
+
+
+def analyze_deck(deck: Deck, *, deck_path: Path | None = None) -> list[Finding]:
     findings: list[Finding] = []
     limits = _limits(deck.audience)
 
@@ -50,6 +151,8 @@ def analyze_deck(deck: Deck) -> list[Finding]:
             )
         )
         return findings
+
+    deck_dir = deck_path.parent.resolve() if deck_path is not None else None
 
     if deck.slides[0].layout != "title":
         findings.append(
@@ -65,6 +168,9 @@ def analyze_deck(deck: Deck) -> list[Finding]:
     pacing_alert_sent = False
 
     for i, slide in enumerate(deck.slides):
+        findings.extend(_icon_findings(slide, i))
+        findings.extend(_media_findings(slide, i, deck_dir))
+
         if slide.layout == "section":
             slides_since_section = 0
             pacing_alert_sent = False
@@ -77,35 +183,47 @@ def analyze_deck(deck: Deck) -> list[Finding]:
 
         slides_since_section += 1
 
-        if slide.layout == "title_content" and slide.bullets:
-            if len(slide.bullets) > limits["max_bullets"]:
+        if slide.layout in ("chart_bar", "chart_line"):
+            cats = slide.chart_categories or []
+            series_list = slide.chart_series or []
+            if not cats or not series_list:
+                findings.append(
+                    Finding(
+                        severity=Severity.error,
+                        slide_index=i,
+                        message="Chart slide missing categories or series.",
+                        suggestion='Provide chart_categories and chart_series aligned by length.',
+                    )
+                )
+            else:
+                for si, ser in enumerate(series_list):
+                    if len(ser.values) != len(cats):
+                        findings.append(
+                            Finding(
+                                severity=Severity.error,
+                                slide_index=i,
+                                message=f"Series \"{ser.name}\" length does not match categories ({len(ser.values)} vs {len(cats)}).",
+                                suggestion="Ensure each series.values matches chart_categories length.",
+                            )
+                        )
+
+        if slide.layout == "two_column":
+            left = slide.bullets_left or []
+            right = slide.bullets_right or []
+            if not left and not right:
                 findings.append(
                     Finding(
                         severity=Severity.warn,
                         slide_index=i,
-                        message=f"Slide has {len(slide.bullets)} bullets (limit ~{limits['max_bullets']} for this audience).",
-                        suggestion="Split into another slide or promote details to speaker notes.",
+                        message="Two-column slide has no bullets_left or bullets_right.",
+                        suggestion="Populate both columns or switch layout.",
                     )
                 )
-            for j, bullet in enumerate(slide.bullets):
-                if len(bullet) > limits["max_bullet_chars"]:
-                    findings.append(
-                        Finding(
-                            severity=Severity.info,
-                            slide_index=i,
-                            message=f"Bullet {j + 1} is long ({len(bullet)} chars).",
-                            suggestion="Shorten or move nuance to speaker notes.",
-                        )
-                    )
-                if not bullet.strip():
-                    findings.append(
-                        Finding(
-                            severity=Severity.warn,
-                            slide_index=i,
-                            message="Empty bullet detected.",
-                            suggestion="Remove empty bullets.",
-                        )
-                    )
+            findings.extend(_bullet_findings(i, left, limits, scope="Left column"))
+            findings.extend(_bullet_findings(i, right, limits, scope="Right column"))
+
+        if slide.layout == "title_content" and slide.bullets:
+            findings.extend(_bullet_findings(i, slide.bullets, limits))
 
         if slide.title and len(slide.title) > limits["max_title_chars"]:
             findings.append(
