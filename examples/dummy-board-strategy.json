@@ -1,0 +1,54 @@
+{
+  "$schema": "../schemas/deck.schema.json",
+  "title": "Northstar FY26 Strategy",
+  "subtitle": "Board briefing · confidential draft",
+  "author": "Strategy Office (dummy)",
+  "audience": {
+    "technical_level": "executive",
+    "attention_span": "short"
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "title": "Northstar FY26 Strategy",
+      "subtitle": "Board briefing · confidential draft",
+      "notes": "Time-box this deck to ~15 minutes; reserve detail for appendix offline."
+    },
+    {
+      "layout": "section",
+      "title": "Where we stand",
+      "notes": "Single headline section — resets attention after title."
+    },
+    {
+      "layout": "title_content",
+      "title": "Market snapshot",
+      "bullets": [
+        "Demand steady in core segments",
+        "Two competitors repositioned midyear",
+        "Pricing pressure localized to Region B"
+      ],
+      "notes": "Executive audience tightens bullet counts in validation — keep to five bullets max."
+    },
+    {
+      "layout": "section",
+      "title": "Decisions needed today",
+      "notes": "Bridge from context to asks."
+    },
+    {
+      "layout": "title_content",
+      "title": "Board asks",
+      "bullets": [
+        "Approve phased capex envelope",
+        "Confirm succession timeline for CFO transition",
+        "Delegate audit committee follow-ups"
+      ],
+      "notes": "Speaker notes carry nuance so slides stay sparse."
+    },
+    {
+      "layout": "quote",
+      "quote": "Strategy is choosing what not to do.",
+      "attribution": "Adapted from Michael Porter",
+      "notes": "Quote layout highlights a memorable line without cluttering data slides."
+    }
+  ]
+}

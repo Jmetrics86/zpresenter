@@ -1,0 +1,39 @@
+{
+  "$schema": "../schemas/deck.schema.json",
+  "title": "Quarterly Review",
+  "subtitle": "FY26 Q1",
+  "author": "ZPresenter demo",
+  "audience": {
+    "technical_level": "executive",
+    "attention_span": "short"
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "title": "Quarterly Review",
+      "subtitle": "FY26 Q1",
+      "notes": "Open with agenda timing."
+    },
+    {
+      "layout": "section",
+      "title": "Highlights",
+      "notes": "Pause for questions."
+    },
+    {
+      "layout": "title_content",
+      "title": "Results",
+      "bullets": [
+        "Revenue aligned with plan",
+        "Costs tracked weekly",
+        "Focus areas clear"
+      ],
+      "notes": "Keep bullets spoken short."
+    },
+    {
+      "layout": "quote",
+      "quote": "Clarity beats cleverness.",
+      "attribution": "Presentation proverb",
+      "notes": "Optional reflection beat."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+[project]
+name = "zpresenter"
+version = "0.1.0"
+description = "Build audience-aware presentations from structured decks (PowerPoint)"
+authors = [
+    { name = "Jmetrics86", email = "jsnbrwstr@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.13.3",
+    "python-pptx>=1.0.2",
+    "rich>=15.0.0",
+    "typer>=0.25.0",
+]
+
+[project.scripts]
+zpresenter = "zpresenter.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.11.7,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "ruff>=0.15.12",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501"]

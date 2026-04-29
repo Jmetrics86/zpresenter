@@ -1,0 +1,8 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["examples/**/*.json"],
+      "url": "./schemas/deck.schema.json"
+    }
+  ]
+}

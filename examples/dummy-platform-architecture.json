@@ -1,0 +1,68 @@
+{
+  "$schema": "../schemas/deck.schema.json",
+  "title": "Payments Platform Architecture",
+  "subtitle": "Deep dive · reliability & boundaries",
+  "author": "Platform Team (dummy)",
+  "audience": {
+    "technical_level": "technical",
+    "attention_span": "long"
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "title": "Payments Platform Architecture",
+      "subtitle": "Deep dive · reliability & boundaries",
+      "notes": "Technical audience allows denser slides in validation rules; still prefer notes for APIs."
+    },
+    {
+      "layout": "section",
+      "title": "System context",
+      "notes": "Section slides pace long-form technical decks."
+    },
+    {
+      "layout": "title_content",
+      "title": "Control plane vs data plane",
+      "bullets": [
+        "Control plane: routing policies, limits, circuit breakers",
+        "Data plane: authorize → capture → settle hot paths only",
+        "Failure isolation: blast radius capped per shard via bulkheads",
+        "Observability: RED metrics per domain service + synthetic probes",
+        "Deployment: progressive rollout with automated rollback gates",
+        "Future work: unify config schema across regions"
+      ],
+      "notes": "Showcases title_content with several bullets — validation suggests splits if limits exceeded."
+    },
+    {
+      "layout": "section",
+      "title": "Failure modes",
+      "notes": "Second section reset before heavier lists."
+    },
+    {
+      "layout": "title_content",
+      "title": "What we simulate monthly",
+      "bullets": [
+        "Regional outage (DNS + LB failover drills)",
+        "Partial ledger degradation with backlog replay",
+        "Third-party PSP latency spikes",
+        "Clock skew detection across settlement windows"
+      ],
+      "notes": "Speaker notes can hold runbook links — not on slide."
+    },
+    {
+      "layout": "quote",
+      "quote": "Everything fails all the time.",
+      "attribution": "Werner Vogels",
+      "notes": "Quote layout works for ethos beats between dense slides."
+    },
+    {
+      "layout": "title_content",
+      "title": "Open risks",
+      "bullets": [
+        "Legacy adapter timeouts under peak batch load",
+        "Certificate rotation automation gaps in sandbox",
+        "Documentation drift vs prod topology map"
+      ],
+      "notes": "Closing slide cluster before Q&A."
+    }
+  ]
+}

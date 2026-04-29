@@ -1,0 +1,70 @@
+{
+  "$schema": "../schemas/deck.schema.json",
+  "title": "Facilitation Skills Workshop",
+  "subtitle": "90-minute session outline",
+  "author": "L&D Collective (dummy)",
+  "audience": {
+    "technical_level": "general",
+    "attention_span": "medium"
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "title": "Facilitation Skills Workshop",
+      "subtitle": "90-minute session outline",
+      "notes": "General audience defaults — balanced bullet caps and pacing hints."
+    },
+    {
+      "layout": "section",
+      "title": "Goals for today",
+      "notes": "Opening arc: intent before mechanics."
+    },
+    {
+      "layout": "title_content",
+      "title": "You will practice",
+      "bullets": [
+        "Setting outcomes at the start of a meeting",
+        "Using prompts instead of speeches",
+        "Capturing decisions visibly before closing"
+      ],
+      "notes": "Classic title_content — headline plus parallel bullets."
+    },
+    {
+      "layout": "section",
+      "title": "Activity · breakout",
+      "notes": "Mid-deck section marker helps audience-aware pacing checks."
+    },
+    {
+      "layout": "title_content",
+      "title": "Breakout brief",
+      "bullets": [
+        "Pairs pick one tense scenario from the card deck",
+        "Five minutes: outline opening script",
+        "Two minutes each: playback to partner",
+        "Whole room: two volunteers share friction points"
+      ],
+      "notes": "Dense facilitation steps live here so slides stay scannable."
+    },
+    {
+      "layout": "quote",
+      "quote": "The quality of our listening shapes the quality of their thinking.",
+      "attribution": "Nancy Kline",
+      "notes": "Quote layout emphasizes principle between exercises."
+    },
+    {
+      "layout": "section",
+      "title": "Wrap-up",
+      "notes": "Final section before commitments."
+    },
+    {
+      "layout": "title_content",
+      "title": "Commitments",
+      "bullets": [
+        "One behavior you will try next week",
+        "One habit you will stop",
+        "Optional buddy check-in Thursday"
+      ],
+      "notes": "Ends with actionable bullets — deck_metadata uses core_properties.title via builder."
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "$defs": {
+    "AudienceProfile": {
+      "description": "Hints for validation and density — tune messaging for the room.",
+      "properties": {
+        "technical_level": {
+          "default": "general",
+          "enum": [
+            "executive",
+            "general",
+            "technical"
+          ],
+          "title": "Technical Level",
+          "type": "string"
+        },
+        "attention_span": {
+          "default": "medium",
+          "enum": [
+            "short",
+            "medium",
+            "long"
+          ],
+          "title": "Attention Span",
+          "type": "string"
+        }
+      },
+      "title": "AudienceProfile",
+      "type": "object"
+    },
+    "Slide": {
+      "description": "One slide with layout-specific optional fields.",
+      "properties": {
+        "layout": {
+          "enum": [
+            "title",
+            "title_content",
+            "section",
+            "quote"
+          ],
+          "title": "Layout",
+          "type": "string"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        },
+        "subtitle": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subtitle"
+        },
+        "bullets": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bullets"
+        },
+        "quote": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quote"
+        },
+        "attribution": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Attribution"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        }
+      },
+      "required": [
+        "layout"
+      ],
+      "title": "Slide",
+      "type": "object"
+    }
+  },
+  "description": "Full presentation.",
+  "properties": {
+    "title": {
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "subtitle": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Subtitle"
+    },
+    "author": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Author"
+    },
+    "audience": {
+      "$ref": "#/$defs/AudienceProfile"
+    },
+    "slides": {
+      "items": {
+        "$ref": "#/$defs/Slide"
+      },
+      "title": "Slides",
+      "type": "array"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "title": "Deck",
+  "type": "object"
+}
