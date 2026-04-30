@@ -23,32 +23,33 @@ def _stack_vertical(
 
 
 # (left_in, top_in, width_in, height_in) base box for the first image in a stack.
+# All rectangles are bounded by the standard 10.0 × 7.5 inch slide.
 _BASE: dict[tuple[SlideLayoutKind, ImagePlacement], tuple[float, float, float, float]] = {
-    # Title / section — logo or strip
-    ("title", "accent_corner"): (7.42, 4.28, 2.38, 1.78),
-    ("title", "banner_lower"): (0.48, 6.42, 9.12, 1.22),
-    ("section", "accent_corner"): (7.42, 4.15, 2.38, 1.78),
-    ("section", "banner_lower"): (0.48, 6.42, 9.12, 1.22),
-    # Title + body — split, below, overlay, strip
-    ("title_content", "primary_right"): (5.28, 1.38, 4.58, 5.08),
-    ("title_content", "primary_below"): (0.5, 5.52, 9.08, 2.08),
-    ("title_content", "accent_corner"): (7.58, 4.92, 2.18, 1.48),
-    ("title_content", "banner_lower"): (0.48, 6.52, 9.12, 1.18),
+    # Title / section — logo corner or full-width lower strip
+    ("title",   "accent_corner"): (7.42, 4.28, 2.38, 1.78),   # right=9.80  bottom=6.06
+    ("title",   "banner_lower"):  (0.48, 6.28, 9.12, 1.22),   # right=9.60  bottom=7.50
+    ("section", "accent_corner"): (7.42, 4.15, 2.38, 1.78),   # right=9.80  bottom=5.93
+    ("section", "banner_lower"):  (0.48, 6.28, 9.12, 1.22),   # right=9.60  bottom=7.50
+    # Title + body — split right, full-width below, corner, or strip
+    ("title_content", "primary_right"):  (5.28, 1.38, 4.58, 5.08),  # right=9.86  bottom=6.46
+    ("title_content", "primary_below"):  (0.50, 5.42, 9.08, 2.08),  # right=9.58  bottom=7.50
+    ("title_content", "accent_corner"):  (7.58, 4.92, 2.18, 1.48),  # right=9.76  bottom=6.40
+    ("title_content", "banner_lower"):   (0.48, 6.32, 9.12, 1.18),  # right=9.60  bottom=7.50
     # Quote
-    ("quote", "primary_below"): (0.52, 4.72, 9.05, 2.35),
-    ("quote", "accent_corner"): (7.08, 3.72, 2.55, 2.05),
-    ("quote", "banner_lower"): (0.48, 6.52, 9.12, 1.18),
-    # Charts
-    ("chart_bar", "accent_corner"): (8.32, 1.48, 1.82, 1.32),
-    ("chart_bar", "banner_lower"): (0.52, 6.35, 9.08, 1.38),
-    ("chart_bar", "primary_below"): (0.52, 6.05, 9.08, 1.75),
-    ("chart_line", "accent_corner"): (8.32, 1.48, 1.82, 1.32),
-    ("chart_line", "banner_lower"): (0.52, 6.35, 9.08, 1.38),
-    ("chart_line", "primary_below"): (0.52, 6.05, 9.08, 1.75),
-    # Two column
-    ("two_column", "two_column_span_below"): (0.5, 6.02, 9.12, 1.58),
-    ("two_column", "accent_corner"): (8.12, 1.32, 1.92, 1.42),
-    ("two_column", "banner_lower"): (0.48, 6.62, 9.12, 1.12),
+    ("quote", "primary_below"): (0.52, 4.72, 9.05, 2.35),  # right=9.57  bottom=7.07
+    ("quote", "accent_corner"): (7.08, 3.72, 2.55, 2.05),  # right=9.63  bottom=5.77
+    ("quote", "banner_lower"):  (0.48, 6.32, 9.12, 1.18),  # right=9.60  bottom=7.50
+    # Charts — accent corner pulled in to stay within 10" width
+    ("chart_bar",  "accent_corner"):  (7.98, 1.48, 1.82, 1.32),  # right=9.80  bottom=2.80
+    ("chart_bar",  "banner_lower"):   (0.52, 6.28, 9.08, 1.22),  # right=9.60  bottom=7.50
+    ("chart_bar",  "primary_below"):  (0.52, 5.72, 9.08, 1.78),  # right=9.60  bottom=7.50
+    ("chart_line", "accent_corner"):  (7.98, 1.48, 1.82, 1.32),  # right=9.80  bottom=2.80
+    ("chart_line", "banner_lower"):   (0.52, 6.28, 9.08, 1.22),  # right=9.60  bottom=7.50
+    ("chart_line", "primary_below"):  (0.52, 5.72, 9.08, 1.78),  # right=9.60  bottom=7.50
+    # Two column — accent corner and span corrected to fit within bounds
+    ("two_column", "two_column_span_below"): (0.50, 5.90, 9.12, 1.60),  # right=9.62  bottom=7.50
+    ("two_column", "accent_corner"):         (7.88, 1.32, 1.82, 1.42),  # right=9.70  bottom=2.74
+    ("two_column", "banner_lower"):          (0.48, 6.28, 9.12, 1.22),  # right=9.60  bottom=7.50
 }
 
 

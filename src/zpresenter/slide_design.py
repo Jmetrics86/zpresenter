@@ -10,7 +10,8 @@ from pptx.util import Inches, Pt
 from zpresenter.models import Deck, SlideLayoutKind
 
 
-def _rgb(hex_str: str | None) -> RGBColor | None:
+def hex_to_rgb(hex_str: str | None) -> RGBColor | None:
+    """Parse an RRGGBB hex string (with or without leading #) to RGBColor, or None on failure."""
     if not hex_str:
         return None
     h = hex_str.strip().lstrip("#")
@@ -30,7 +31,7 @@ _MUTED_DEFAULT = RGBColor(0x64, 0x74, 0x8B)
 
 def accent_rgb(deck: Deck) -> RGBColor:
     if deck.theme and deck.theme.accent_hex:
-        c = _rgb(deck.theme.accent_hex)
+        c = hex_to_rgb(deck.theme.accent_hex)
         if c is not None:
             return c
     return _FALLBACK_ACCENT
@@ -38,7 +39,7 @@ def accent_rgb(deck: Deck) -> RGBColor:
 
 def muted_rgb(deck: Deck) -> RGBColor:
     if deck.theme and deck.theme.muted_hex:
-        c = _rgb(deck.theme.muted_hex)
+        c = hex_to_rgb(deck.theme.muted_hex)
         if c is not None:
             return c
     return _MUTED_DEFAULT

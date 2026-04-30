@@ -4,7 +4,7 @@ Build **audience-aware** slide decks from structured **JSON**, validate pacing a
 
 ## How it works
 
-1. **Input** — A single **`Deck`** JSON file: metadata (`title`, `subtitle`, `author`, optional **`theme`** and **`audience`**), plus an ordered **`slides[]`** array. Each slide picks a **`layout`** and only the fields that layout understands (bullets, charts, images, icons, notes, etc.).
+1. **Input** — A single **`Deck`** JSON file: metadata (`title`, `subtitle`, `author`, optional **`theme`** and **`audience`**), plus **`slides[]`**. Each slide has a **`layout`** (explicit or **resolved** from **`layout_intent`** + body fields — Gamma-style minimal decks can omit **`layout`**; see **`examples/gamma-minimal.deck.json`**). Populate only the fields that slide type uses (bullets, charts, images, icons, notes, etc.).
 2. **Validation** — **`zpresenter check`** loads the deck with [Pydantic](https://docs.pydantic.dev/), runs layout rules (e.g. chart series lengths), optional **audience** heuristics (bullet count, pacing, missing assets), and icon/image warnings. Fix issues in JSON and re-run.
 3. **Rendering** — **`zpresenter build`** resolves **paths relative to the deck JSON file’s directory** (and optional **`https`** image URLs), applies typography and chrome from **`src/zpresenter/slide_design.py`** (fonts, margins, accent bars, dividers), maps logical layouts to PowerPoint placeholders, and writes a `.pptx`.
 4. **Deterministic output** — Given the same JSON and asset files, builds are repeatable. LLMs or humans only affect *what you put in the JSON*; the tool does not call cloud AI during `build`.
@@ -32,7 +32,7 @@ These habits line up with how **`audience`** and the renderer behave:
 |----------|-----|
 | **Start from a sample** | Copy **`examples/sample.deck.json`** or a file under **`examples/samples/`**, keep `"$schema"` pointing at the schema, then rename and trim. |
 | **Set `audience` honestly** | **`technical_level`** (`executive` / `general` / `technical`) and **`attention_span`** (`short` / `medium` / `long`) tune **`check`** limits (bullet counts, section pacing hints). Mis-set audience ⇒ noisy or misleading warnings. |
-| **Use `slides[0]` as `layout: "title"`** unless you intend otherwise — opening narrative matches executive expectations and avoids pacing warnings. |
+| **Use `slides[0]` as `layout: "title"` or `layout_intent: "opening"`** | Cover slides match executive expectations and pacing hints; **`opening`** resolves to **`title`** when **`layout`** is omitted. |
 | **Put detail in `notes`** | Body bullets stay short; nuance, timing, and backup stats belong in **`notes`** (speaker-only). Dense paragraphs on-slide fight the layout engine and readability. |
 | **Break cadence with `section`** | Insert **`layout": "section"`** chapter slides every ~8–16 content slides ( **`check`** suggests when stretches get long). One strong title per section slide. |
 | **Charts: align lengths** | **`chart_categories`** length must equal each **`chart_series[].values`** length. Prefer clear category labels (quarters, phases, weeks). |
@@ -43,6 +43,8 @@ These habits line up with how **`audience`** and the renderer behave:
 | **Iterate with `check` before `build`** | Resolve **errors** (red); treat **warnings** as policy (build can proceed with **`--skip-check`** only when you accept the risk). |
 
 **Using Cursor or other AI:** paste schema-backed JSON or samples into chat and ask for edits; paste **`check`** output when fixing issues. The repo does not embed API keys — authoring assistance uses your editor/tools; **`build`** stays offline aside from optional **`https`** image fetches.
+
+Optional **`layout_intent`** on each slide documents semantic goal for tooling and **`check`**; when **`layout`** is omitted, intent plus populated fields **determine** the resolved **`layout`** before **`build`**.
 
 ## Deck JSON reference
 
@@ -57,6 +59,8 @@ These habits line up with how **`audience`** and the renderer behave:
 
 ### Slide layouts
 
+Each slide needs a concrete **`layout`** after parsing — either **set explicitly** or **resolved** from **`layout_intent`** (see **`layout_solver.resolve_slide_layout_or_raise`**). If **`layout_intent`** disagrees with what your bullets/chart/columns imply, validation fails until you align intent, fields, or **`layout`**.
+
 | `layout` | Typical content |
 |----------|------------------|
 | **`title`** | Opening — **`title`**, optional **`subtitle`**. |
@@ -66,7 +70,7 @@ These habits line up with how **`audience`** and the renderer behave:
 | **`chart_bar`** / **`chart_line`** | **`title`**, optional **`subtitle`**, **`chart_categories`**, **`chart_series[]`**. |
 | **`two_column`** | **`title`**, **`bullets_left`**, **`bullets_right`**. |
 
-Optional on many slides: **`notes`**, **`title_color_hex`**, **`title_icon`**, **`bullet_icons`** (parallel to **`bullets`**), **`bullets_left_icons`** / **`bullets_right_icons`**, **`images[]`**.
+Optional on many slides: **`layout_intent`** (semantic **`layout`** driver when **`layout`** omitted — see Gamma-style **`examples/gamma-minimal.deck.json`**), **`notes`**, **`title_color_hex`**, **`title_icon`**, **`bullet_icons`** (parallel to **`bullets`**), **`bullets_left_icons`** / **`bullets_right_icons`**, **`images[]`**.
 
 ### Icons & images
 
@@ -87,7 +91,8 @@ Rendering applies a consistent **Calibri** scale, charcoal body text, accent bar
 | Command | Purpose |
 |---------|---------|
 | `zpresenter check <deck.json>` | Run audience / pacing checks (exit non-zero on warnings/errors depending on severity). |
-| `zpresenter build <deck.json> <out.pptx>` | Render `.pptx`; fails on audience **errors** unless `--skip-check`. |
+| `zpresenter suggest-layout <deck.json>` | Heuristic layout suggestions from content + optional **`layout_intent`** (`--json` for machine-readable output). |
+| `zpresenter build <deck.json> <out.pptx>` | Render `.pptx`; fails on audience **errors** unless `--skip-check`. Optional **`--template`** / **`-t`** branded `.pptx` for masters/theme. |
 | `zpresenter validate-json <deck.json>` | Parse deck and print normalized JSON. |
 | `zpresenter schema` | Print JSON Schema for `Deck` (stdout). |
 | `zpresenter schema --out schemas/deck.schema.json` | Write schema file (after model changes). |
@@ -99,15 +104,129 @@ Rendering applies a consistent **Calibri** scale, charcoal body text, accent bar
 
 ## Examples
 
+### Minimal / reference
+
 | File | Notes |
 |------|--------|
-| `examples/sample.deck.json` | Minimal demo — icons + raster **`images`** under **`examples/assets/`** |
-| `examples/samples/sample-product-launch-orbit.json` | Long SaaS/GTM narrative (~29 slides): charts, two-column, theme blues/greens |
-| `examples/samples/sample-clinical-clear302.json` | Clinical/evidence storyline (~28 slides): efficacy/safety charts, dense splits |
-| `examples/samples/sample-design-system-nova.json` | Design-system audit (~30 slides): accessibility + governance + palette charts |
+| `examples/gamma-minimal.deck.json` | **Intent-first** — `layout` omitted; `layout_intent` + fields resolve before `build`. Simplest way to author. |
+| `examples/sample.deck.json` | Minimal demo — icons + raster `images` under `examples/assets/`. |
+
+### 20-slide showcase decks (all layouts · images · iconography)
+
+Run `uv run python scripts/generate_20slide_samples.py` to regenerate.
+
+| File | Theme | Audience |
+|------|-------|----------|
+| `examples/samples/sample-apex-strategy-2026.json` | Navy / amber — executive market strategy | executive / short |
+| `examples/samples/sample-meridian-platform-2026.json` | Charcoal / emerald — engineering platform review | technical / long |
+| `examples/samples/sample-nova-launch-2026.json` | Indigo / pink — product launch GTM | general / medium |
+
+### Original showcase decks (~28–30 slides)
+
+Run `uv run python scripts/generate_sample_decks.py` to regenerate.
+
+| File | Notes |
+|------|--------|
+| `examples/samples/sample-product-launch-orbit.json` | SaaS/GTM narrative: charts, two-column, blues/greens |
+| `examples/samples/sample-clinical-clear302.json` | Clinical/evidence: efficacy/safety charts, dense splits |
+| `examples/samples/sample-design-system-nova.json` | Design-system audit: accessibility + governance + palette charts |
+
+### Compact examples
+
+| File | Notes |
+|------|--------|
 | `examples/dummy-board-strategy.json` | Executive / short attention |
 | `examples/dummy-platform-architecture.json` | Technical / long attention |
 | `examples/dummy-team-workshop.json` | General / medium |
+
+## Web UI (card-based, Gamma-style)
+
+zpresenter ships a browser UI with live card previews and PPTX export — no `.pptx` file needed to author.
+
+```bash
+# 1. Install web extras
+uv add fastapi 'uvicorn[standard]'
+
+# 2. Build the React frontend (one-time)
+cd webapp && npm install && npm run build && cd ..
+
+# 3. Start (opens browser automatically)
+uv run zpresenter serve
+```
+
+- **Left sidebar**: paste Deck JSON or pick a built-in example · validation findings
+- **Main canvas**: current slide as a styled 16:9 card (title, section, bullets, two-column, chart, quote)
+- **Present mode**: press **F** (or the Present button) for fullscreen; **Esc** exits
+- **Export PPTX**: one click — downloads the PowerPoint file from the same JSON
+
+Dev mode: `uv run zpresenter serve --reload` in one terminal, `cd webapp && npm run dev` in another → http://localhost:5173 with hot reload.
+
+See **`docs/WEBAPP.md`** for the full setup guide and API reference.
+
+## AI slide improvement (API key setup)
+
+The web UI has an **✨ AI Improve** panel (keyboard shortcut `I`) that streams LLM improvements to each slide. It supports Anthropic (Claude), OpenAI (GPT-4o), and Google Gemini.
+
+### Preferred method: `.env` file (server-side, most secure)
+
+Create a `.env` file **in the project root** (same folder as `pyproject.toml`). Add only the key for the provider you use:
+
+```bash
+# .env  — never commit this file
+ANTHROPIC_API_KEY=sk-ant-...
+OPENAI_API_KEY=sk-...
+GOOGLE_API_KEY=AIza...
+```
+
+> **`.env` is already listed in `.gitignore`** — it will not be committed accidentally.
+
+Start the server normally:
+
+```bash
+uv run zpresenter serve
+```
+
+The server reads `.env` automatically (via python-dotenv, bundled with uvicorn). A green dot appears next to the provider name in the AI panel confirming the key is active — no key entry needed in the browser.
+
+### Alternative: environment variable in your shell
+
+Set the key in the terminal before starting the server. The key exists only for the lifetime of that shell session:
+
+```bash
+# macOS / Linux
+export ANTHROPIC_API_KEY="sk-ant-..."
+uv run zpresenter serve
+
+# Windows PowerShell
+$env:ANTHROPIC_API_KEY = "sk-ant-..."
+uv run zpresenter serve
+```
+
+### Browser-only fallback (key never sent to disk)
+
+If you cannot or prefer not to configure the server, enter your API key directly in the AI panel in the browser. It is stored only in that browser's `localStorage`, never written to any file on disk, and sent to the server only inside the encrypted HTTPS/localhost POST request body for that session.
+
+Click **save** in the panel after entering the key — it persists across page refreshes in that browser.
+
+### Which provider should I install?
+
+Install only the SDK for the provider whose key you have:
+
+```bash
+uv add anthropic             # Claude Sonnet / Opus
+uv add openai                # GPT-4o / o1
+uv add google-generativeai   # Gemini Flash / Pro
+```
+
+### Security checklist
+
+| ✅ Do | ❌ Don't |
+|-------|---------|
+| Use a `.env` file in the project root | Hard-code the key in any `.json`, `.py`, or `.ts` source file |
+| Add `.env` to `.gitignore` (already done) | Commit `.env` or any file containing a bare key |
+| Use a **restricted** key scoped to this project | Reuse your personal "master" API key |
+| Rotate the key if you suspect leakage | Share the key over Slack, email, or chat |
+| Prefer `ANTHROPIC_API_KEY` in `.env` over browser storage for shared machines | Leave the browser localStorage key active on a shared or public computer |
 
 ## Development
 
@@ -116,6 +235,9 @@ uv run pytest
 uv run ruff check src tests
 ```
 
-See **`docs/AUDIT.md`** for a document inventory, findings, and remediation history.
-
-See **`docs/RESEARCH.md`** for comparable tools (Markdown stacks, SaaS APIs, libraries) and positioning notes.
+| Doc | Contents |
+|-----|----------|
+| `docs/WEBAPP.md` | Web UI setup, dev mode, API reference |
+| `docs/PRESENTATION_EVOLUTION.md` | Architecture roadmap — PPTX wall, intent-first authoring, Gamma-lite phases |
+| `docs/RESEARCH.md` | Comparable tools (Markdown stacks, SaaS APIs, libraries) and positioning |
+| `docs/AUDIT.md` | Document inventory, findings, and remediation history |

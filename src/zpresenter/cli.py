@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from dataclasses import asdict
 from pathlib import Path
 
 import typer
@@ -13,6 +14,7 @@ from rich.table import Table
 from zpresenter.audience import Severity, analyze_deck, summarize_findings
 from zpresenter.builder import build_presentation, save_presentation
 from zpresenter.iconography import describe_icon, list_icon_ids, search_icons
+from zpresenter.layout_solver import suggest_deck
 from zpresenter.models import Deck, deck_json_schema, parse_deck_json
 from zpresenter.template_inspect import describe_slide_layouts
 
@@ -99,6 +101,46 @@ def _load_deck(deck_path: Path) -> Deck:
     return parse_deck_json(deck_path.read_text(encoding="utf-8"))
 
 
+@app.command("suggest-layout")
+def suggest_layout_command(
+    deck_path: Path = typer.Argument(..., exists=True, readable=True, help="Path to deck JSON"),
+    as_json: bool = typer.Option(False, "--json", help="Emit JSON instead of a Rich table."),
+) -> None:
+    """Suggest layouts from content fields and optional layout_intent (does not rewrite the deck)."""
+    deck = _load_deck(deck_path)
+    rows = suggest_deck(deck)
+    if as_json:
+        typer.echo(json.dumps([asdict(r) for r in rows], indent=2))
+        raise typer.Exit(0)
+
+    table = Table(show_header=True)
+    table.add_column("#", justify="right")
+    table.add_column("layout")
+    table.add_column("intent")
+    table.add_column("inferred")
+    table.add_column("status")
+    table.add_column("notes")
+
+    for r in rows:
+        idx = str(r.slide_index + 1)
+        intent_text = r.layout_intent or "—"
+        inferred_text = r.inferred or "—"
+        ok_content = r.aligned_with_content
+        ok_intent = r.intent_ok
+        if ok_content and ok_intent:
+            status = "[green]ok[/green]"
+        elif not ok_content and not ok_intent:
+            status = "[red]review[/red]"
+        elif not ok_content:
+            status = "[yellow]content[/yellow]"
+        else:
+            status = "[cyan]intent[/cyan]"
+        notes = "; ".join(r.reasons) if r.reasons else ""
+        table.add_row(idx, r.current, intent_text, inferred_text, status, notes)
+
+    console.print(table)
+
+
 @app.command("check")
 def check_command(
     deck_path: Path = typer.Argument(..., exists=True, readable=True, help="Path to deck JSON"),
@@ -144,6 +186,14 @@ def build_command(
     skip_check: bool = typer.Option(
         False, "--skip-check", help="Do not fail when audience checks report errors."
     ),
+    template: Path | None = typer.Option(
+        None,
+        "--template",
+        "-t",
+        exists=True,
+        readable=True,
+        help="Optional branded .pptx to use as slide master/theme (Gamma-like polish without editing JSON).",
+    ),
 ) -> None:
     """Render deck JSON to a PowerPoint file."""
     deck = _load_deck(deck_path)
@@ -158,7 +208,7 @@ def build_command(
     if warn > 0:
         console.print(f"[yellow]Warning:[/yellow] {warn} audience warning(s); continuing.")
 
-    prs = build_presentation(deck, asset_root=deck_path.parent)
+    prs = build_presentation(deck, asset_root=deck_path.parent, template_path=template)
     save_presentation(prs, out_path)
     console.print(f"[green]Wrote[/green] {out_path.resolve()}")
 
@@ -219,6 +269,29 @@ def list_layouts_command(
     console.print(table)
     master_ct = len(prs.slide_masters)
     console.print(f"\n[dim]{len(rows)} layout(s) across {master_ct} master(s)[/dim]")
+
+
+@app.command("serve")
+def serve_command(
+    host: str = typer.Option("127.0.0.1", "--host", help="Host to bind."),
+    port: int = typer.Option(8000, "--port", help="Port to listen on."),
+    reload: bool = typer.Option(False, "--reload", help="Auto-reload on code changes (dev only)."),
+) -> None:
+    """Start the card-based web UI (requires: uv add fastapi 'uvicorn[standard]')."""
+    try:
+        import uvicorn  # noqa: PLC0415
+    except ImportError:
+        console.print("[red]uvicorn not installed.[/red]")
+        console.print("  uv add fastapi 'uvicorn[standard]'")
+        raise typer.Exit(1)
+    import threading  # noqa: PLC0415
+    import webbrowser  # noqa: PLC0415
+
+    url = f"http://{host}:{port}"
+    console.print(f"[green]zpresenter web UI[/green] → [link={url}]{url}[/link]")
+    console.print("[dim]  Ctrl+C to stop  •  F key in browser = present mode[/dim]")
+    threading.Timer(1.4, lambda: webbrowser.open(url)).start()
+    uvicorn.run("zpresenter.server:app", host=host, port=port, reload=reload)
 
 
 app.add_typer(icons_app, name="icons")

@@ -8,6 +8,7 @@ from pathlib import Path
 from pydantic import BaseModel
 
 from zpresenter.iconography import resolve_icon
+from zpresenter.layout_solver import intent_matches_layout, layouts_for_intent
 from zpresenter.media import local_path_exists
 from zpresenter.models import AudienceProfile, Deck, Slide
 
@@ -117,6 +118,68 @@ def _icon_findings(slide: Slide, slide_index: int) -> list[Finding]:
     return out
 
 
+def _structure_layout_findings(slide: Slide, slide_index: int) -> list[Finding]:
+    """Warn when populated fields contradict the declared layout."""
+    out: list[Finding] = []
+
+    cats = slide.chart_categories or []
+    series_list = slide.chart_series or []
+    if cats and series_list and slide.layout not in ("chart_bar", "chart_line"):
+        out.append(
+            Finding(
+                severity=Severity.warn,
+                slide_index=slide_index,
+                message=(
+                    f'Chart fields are set ({len(cats)} categories, {len(series_list)} series) '
+                    f'but layout is "{slide.layout}", not a chart layout.'
+                ),
+                suggestion='Use layout "chart_bar" or "chart_line".',
+            )
+        )
+
+    left = slide.bullets_left or []
+    right = slide.bullets_right or []
+    if left and right and slide.layout != "two_column":
+        out.append(
+            Finding(
+                severity=Severity.warn,
+                slide_index=slide_index,
+                message='Both bullets_left and bullets_right are set but layout is not "two_column".',
+                suggestion='Use layout "two_column" for side-by-side columns.',
+            )
+        )
+
+    quote_text = (slide.quote or "").strip()
+    if quote_text and slide.layout != "quote":
+        out.append(
+            Finding(
+                severity=Severity.warn,
+                slide_index=slide_index,
+                message=f'Quote text is set but layout is "{slide.layout}", not "quote".',
+                suggestion='Use layout "quote" so the quote renders in the headline slot.',
+            )
+        )
+
+    return out
+
+
+def _layout_intent_findings(slide: Slide, slide_index: int) -> list[Finding]:
+    intent = slide.layout_intent
+    if intent is None:
+        return []
+    if intent_matches_layout(intent, slide.layout):
+        return []
+    allowed = ", ".join(sorted(layouts_for_intent(intent)))
+    return [
+        Finding(
+            severity=Severity.info,
+            slide_index=slide_index,
+            message=f'layout_intent "{intent}" does not match layout "{slide.layout}".',
+            suggestion=f"Expected one of: {allowed}; or clear layout_intent.",
+        )
+    ]
+
+
 def _media_findings(slide: Slide, slide_index: int, deck_dir: Path | None) -> list[Finding]:
     if deck_dir is None:
         return []
@@ -170,6 +233,8 @@ def analyze_deck(deck: Deck, *, deck_path: Path | None = None) -> list[Finding]:
     for i, slide in enumerate(deck.slides):
         findings.extend(_icon_findings(slide, i))
         findings.extend(_media_findings(slide, i, deck_dir))
+        findings.extend(_structure_layout_findings(slide, i))
+        findings.extend(_layout_intent_findings(slide, i))
 
         if slide.layout == "section":
             slides_since_section = 0

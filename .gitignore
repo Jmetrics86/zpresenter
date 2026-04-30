@@ -15,3 +15,11 @@ out/
 # Tool caches
 .pytest_cache/
 .ruff_cache/
+
+# API keys — never commit these
+.env
+*.env
+
+# Node / webapp
+webapp/node_modules/
+webapp/dist/

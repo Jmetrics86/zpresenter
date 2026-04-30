@@ -31,6 +31,7 @@ from zpresenter.slide_design import (
     configure_subtitle_paragraph,
     configure_title_textframe,
     divider_line_rgb,
+    hex_to_rgb,
     stamp_content_header_band,
     stamp_section_slide_band,
     stamp_title_slide_footer_rule,
@@ -39,18 +40,6 @@ from zpresenter.slide_image_layout import rects_for_images
 
 # Narrow no-break space between catalog glyph and slide text (stable across fonts).
 _ICON_GAP = "\u202f"
-
-
-def _try_rgb(hex_str: str | None) -> RGBColor | None:
-    if not hex_str:
-        return None
-    h = hex_str.strip().lstrip("#")
-    if len(h) != 6:
-        return None
-    try:
-        return RGBColor.from_string(h)
-    except ValueError:
-        return None
 
 
 def _with_icon(icon_id: str | None, text: str | None) -> str:
@@ -80,7 +69,11 @@ _PLACEMENT_DRAW_ORDER = {
 
 
 def _adjust_title_content_body(body, slide: Slide) -> None:
-    """Leave room for primary_right / primary_below images (validated mutually exclusive)."""
+    """Resize the body placeholder to leave room for primary_right / primary_below images.
+
+    primary_below image starts at y=5.42"; body must end by y≈5.30" to avoid overlap.
+    primary_right image starts at x=5.28"; body must end by x≈5.14" to avoid overlap.
+    """
     if body is None:
         return
     imgs = slide.images or []
@@ -88,14 +81,14 @@ def _adjust_title_content_body(body, slide: Slide) -> None:
     has_below = any(i.placement == "primary_below" for i in imgs)
     if has_below:
         body.top = Inches(1.42)
-        body.height = Inches(4.08)
+        body.height = Inches(3.90)   # bottom=5.32, 0.10" clear of image at 5.42
         if not has_right:
             body.left = Inches(0.52)
             body.width = Inches(9.05)
     if has_right:
         body.left = Inches(0.52)
         body.top = Inches(1.42)
-        body.width = Inches(4.62)
+        body.width = Inches(4.62)   # right=5.14, 0.14" clear of image at 5.28
         if not has_below:
             body.height = Inches(5.08)
 
@@ -133,11 +126,11 @@ def _inject_slide_images(s, slide: Slide, deck: Deck, asset_root: Path | None) -
 
 
 def _rgb_for_slide_title(slide: Slide, deck: Deck, *, section_style: bool) -> RGBColor | None:
-    explicit = _try_rgb(slide.title_color_hex)
+    explicit = hex_to_rgb(slide.title_color_hex)
     if explicit is not None:
         return explicit
     if section_style and deck.theme:
-        return _try_rgb(deck.theme.primary_hex)
+        return hex_to_rgb(deck.theme.primary_hex)
     return None
 
 
@@ -427,8 +420,16 @@ def _apply_slide(prs: Presentation, slide: Slide, deck: Deck, asset_root: Path |
     _set_notes(s, slide.notes)
 
 
-def build_presentation(deck: Deck, *, asset_root: Path | None = None) -> Presentation:
-    prs = Presentation()
+def build_presentation(
+    deck: Deck,
+    *,
+    asset_root: Path | None = None,
+    template_path: Path | str | None = None,
+) -> Presentation:
+    if template_path is not None:
+        prs = Presentation(str(template_path))
+    else:
+        prs = Presentation()
     props = prs.core_properties
     props.title = deck.title
     props.subject = deck.subtitle or ""

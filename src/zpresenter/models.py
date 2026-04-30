@@ -18,6 +18,17 @@ SlideLayoutKind = Literal[
     "two_column",
 ]
 
+LayoutIntent = Literal[
+    "opening",
+    "chapter_break",
+    "narrative",
+    "comparison",
+    "metrics_bar",
+    "metrics_trend",
+    "pull_quote",
+    "visual_emphasis",
+]
+
 ImagePlacement = Literal[
     "primary_right",
     "primary_below",
@@ -80,7 +91,20 @@ class SlideImage(BaseModel):
 class Slide(BaseModel):
     """One slide with layout-specific optional fields."""
 
-    layout: SlideLayoutKind
+    layout: SlideLayoutKind | None = Field(
+        None,
+        description=(
+            "PowerPoint slide layout. Omit when using layout_intent or inferrable body fields — "
+            "Deck validation resolves to a concrete layout before build."
+        ),
+    )
+    layout_intent: LayoutIntent | None = Field(
+        None,
+        description=(
+            "Semantic goal (Gamma-style). When `layout` is omitted, intent selects or constrains "
+            "the resolved layout together with populated fields."
+        ),
+    )
     title: str | None = None
     subtitle: str | None = None
     bullets: list[str] | None = None
@@ -122,6 +146,8 @@ class Slide(BaseModel):
 
     @model_validator(mode="after")
     def _validate_slide_images(self) -> Slide:
+        if self.layout is None:
+            return self
         imgs = self.images or []
         allowed = ALLOWED_IMAGE_PLACEMENTS[self.layout]
         for img in imgs:
@@ -149,6 +175,39 @@ class Deck(BaseModel):
     audience: AudienceProfile = Field(default_factory=AudienceProfile)
     theme: DeckTheme | None = None
     slides: list[Slide] = Field(default_factory=list)
+
+    @model_validator(mode="before")
+    @classmethod
+    def _materialize_slide_layouts(cls, data: Any) -> Any:
+        """Inject omitted ``layout`` from ``layout_intent`` + fields before nested Slide validation."""
+        from zpresenter.layout_solver import resolve_slide_layout_or_raise
+
+        if not isinstance(data, dict):
+            return data
+        slides_raw = data.get("slides")
+        if not slides_raw or not isinstance(slides_raw, list):
+            return data
+
+        new_slides: list[Any] = []
+        for i, raw in enumerate(slides_raw):
+            if isinstance(raw, Slide):
+                if raw.layout is not None:
+                    new_slides.append(raw)
+                    continue
+                resolved = resolve_slide_layout_or_raise(raw, i)
+                new_slides.append(raw.model_copy(update={"layout": resolved}))
+                continue
+            if not isinstance(raw, dict):
+                new_slides.append(raw)
+                continue
+            if raw.get("layout") is not None:
+                new_slides.append(raw)
+                continue
+            slide = Slide.model_validate(raw)
+            resolved = resolve_slide_layout_or_raise(slide, i)
+            new_slides.append({**raw, "layout": resolved})
+
+        return {**data, "slides": new_slides}
 
 
 def parse_deck_json(data: str | bytes) -> Deck:

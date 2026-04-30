@@ -1,0 +1,44 @@
+{
+  "$schema": "../schemas/deck.schema.json",
+  "title": "Gamma-style minimal deck",
+  "subtitle": "layout omitted — resolved from layout_intent + fields",
+  "theme": {
+    "primary_hex": "2563EB",
+    "accent_hex": "059669",
+    "muted_hex": "64748B"
+  },
+  "slides": [
+    {
+      "layout_intent": "opening",
+      "title": "North Star narrative",
+      "subtitle": "Intent-first slide declarations"
+    },
+    {
+      "layout_intent": "chapter_break",
+      "title": "Market context",
+      "title_color_hex": "2563EB"
+    },
+    {
+      "layout_intent": "narrative",
+      "title": "Why now",
+      "bullets": [
+        "Composable stacks overtaking suites",
+        "Latency sensitivity at checkout",
+        "Partner demand for repeatable architectures"
+      ]
+    },
+    {
+      "layout_intent": "comparison",
+      "title": "Build vs buy",
+      "bullets_left": ["Speed", "Cost posture", "Vendor leverage"],
+      "bullets_right": ["Control", "Talent depth", "Roadmap risk"]
+    },
+    {
+      "layout_intent": "metrics_bar",
+      "title": "Weekly momentum",
+      "subtitle": "Pilot cohort",
+      "chart_categories": ["W1", "W2", "W3"],
+      "chart_series": [{ "name": "Activation %", "values": [42.0, 51.0, 58.0] }]
+    }
+  ]
+}

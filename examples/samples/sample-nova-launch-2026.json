@@ -1,0 +1,753 @@
+{
+  "title": "Nova Commerce 3.0 — Product Launch 2026",
+  "subtitle": "Press Briefing Deck · Embargo Until 00:01 PST July 22 2026",
+  "author": "Nova Commerce Product Team",
+  "audience": {
+    "technical_level": "general",
+    "attention_span": "medium"
+  },
+  "theme": {
+    "primary_hex": "4F46E5",
+    "accent_hex": "EC4899",
+    "muted_hex": "6B7280"
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "layout_intent": "opening",
+      "title": "Nova Commerce 3.0",
+      "subtitle": "Intelligent commerce — built for the era of ambient buying",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "15-min lightning pitch for press briefing, then 10-min Q&A.",
+      "title_color_hex": null,
+      "title_icon": "status.new",
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/productlaunch/1200/675",
+          "placement": "banner_lower",
+          "caption": "Nova 3.0 — shipping Q3 2026",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "The Problem We Solve",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "4F46E5",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Today's Commerce Is Fragmented & Frictionless",
+      "subtitle": null,
+      "bullets": [
+        "Average checkout abandonment 72% — buyers lose intent mid-flow",
+        "7 different platforms to run one storefront: ERP, PIM, OMS, WMS, CRM, CX, analytics",
+        "Returns cost 2× fulfilment — wrong size, wrong expectation, wrong product",
+        "Personalisation feels creepy, not helpful — conversion lift rarely exceeds 3%",
+        "AI tools bolted on post-hoc — not native to the commerce stack"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "meta.question",
+      "bullet_icons": [
+        "data.trend_down",
+        "tech.gear",
+        "commerce.cart",
+        "people.person",
+        "tech.api"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "layout_intent": "metrics_bar",
+      "title": "Top Merchant Pain Points — % Citing as Critical",
+      "subtitle": "Nova Commerce Merchant Survey 2026 | n = 2,400",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Checkout UX",
+        "Inventory Sync",
+        "AI / Personalise",
+        "Returns",
+        "Cost"
+      ],
+      "chart_series": [
+        {
+          "name": "Mid-Market Merchants",
+          "values": [
+            68.0,
+            54.0,
+            71.0,
+            48.0,
+            62.0
+          ]
+        },
+        {
+          "name": "Enterprise Merchants",
+          "values": [
+            52.0,
+            79.0,
+            65.0,
+            81.0,
+            44.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "Introducing Nova Commerce 3.0",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "4F46E5",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "Commerce Before and After Nova 3.0",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Before Nova 3.0",
+        "Static product pages, same for everyone",
+        "Rule-based promotions, manually configured",
+        "Returns processed 5–10 days",
+        "Inventory oversell a weekly occurrence"
+      ],
+      "bullets_right": [
+        "With Nova 3.0",
+        "Ambient AI: page adapts to each session",
+        "Intent signals → promotion in real time",
+        "AI triage + label print in 90 seconds",
+        "Unified inventory graph, real-time sync"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "meta.spark",
+      "bullet_icons": null,
+      "bullets_left_icons": [
+        null,
+        "status.fail",
+        "status.fail",
+        "status.warning",
+        "status.warning"
+      ],
+      "bullets_right_icons": [
+        null,
+        "status.new",
+        "meta.lightbulb",
+        "status.success",
+        "status.success"
+      ],
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "visual_emphasis",
+      "title": "Five Core Capabilities",
+      "subtitle": null,
+      "bullets": [
+        "Ambient Storefronts: AI-rendered pages, no template editing",
+        "Unified Commerce Graph: one data model across all channels",
+        "Intelligent Returns: vision AI classifies condition in seconds",
+        "Real-Time Inventory: sub-second sync across 50+ fulfilment nodes",
+        "Commerce Copilot: conversational merchandising for ops teams"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "ui.layout",
+      "bullet_icons": [
+        "status.new",
+        "tech.api",
+        "meta.lightbulb",
+        "data.dashboard",
+        "people.voice"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/productui/1200/675",
+          "placement": "primary_right",
+          "caption": "Nova 3.0 Ambient Storefront — live demo",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "chart_line",
+      "layout_intent": "metrics_trend",
+      "title": "Conversion Lift — Beta Merchant Results",
+      "subtitle": "100-day rolling average; 42 beta merchants · Q1–Q2 2026",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Week 1",
+        "Week 4",
+        "Week 8",
+        "Week 12",
+        "Week 16"
+      ],
+      "chart_series": [
+        {
+          "name": "Ambient Storefront uplift %",
+          "values": [
+            0.0,
+            1.2,
+            2.8,
+            4.1,
+            5.7
+          ]
+        },
+        {
+          "name": "Checkout conversion uplift %",
+          "values": [
+            0.0,
+            0.8,
+            1.9,
+            3.2,
+            4.4
+          ]
+        },
+        {
+          "name": "AOV uplift %",
+          "values": [
+            0.0,
+            1.6,
+            2.4,
+            3.8,
+            5.1
+          ]
+        }
+      ],
+      "notes": "5.7% Ambient uplift alone justifies Nova 3.0 at our price point.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "quote",
+      "layout_intent": "pull_quote",
+      "title": null,
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": "Nova's ambient storefront cut our A/B test cycle from 3 weeks to 2 hours. We shipped 48 personalisation experiments in Q1 that would have taken the full year before.",
+      "attribution": "Head of Digital, Top-10 European Sports Retailer",
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/retail/1200/675",
+          "placement": "accent_corner",
+          "caption": null,
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "Go-to-Market Strategy",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "4F46E5",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Pricing & Packaging",
+      "subtitle": null,
+      "bullets": [
+        "Growth ($499/mo): Ambient Storefronts + Unified Graph + 3 channels",
+        "Scale ($1,499/mo): + Real-Time Inventory + Commerce Copilot + 10 channels",
+        "Enterprise (custom): + Intelligent Returns + SLA + dedicated onboarding",
+        "All plans: unlimited SKUs, no GMV fees, 30-day free trial"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "commerce.money",
+      "bullet_icons": [
+        "status.success",
+        "data.trend_up",
+        "people.team",
+        "status.new"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "Channel Strategy",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Direct (ACV > $12K)",
+        "Outbound AE team: 120 mid-market targets",
+        "Inbound from content + community",
+        "Annual deals with CSM coverage"
+      ],
+      "bullets_right": [
+        "Partner & Marketplace",
+        "Shopify Plus app: 600K merchant reach",
+        "Salesforce AppExchange listing",
+        "System integrator co-sell (Accenture, PwC)"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "nav.target",
+      "bullet_icons": null,
+      "bullets_left_icons": [
+        null,
+        "people.person",
+        "meta.lightbulb",
+        "people.team"
+      ],
+      "bullets_right_icons": [
+        null,
+        "commerce.cart",
+        "tech.api",
+        "people.handshake"
+      ],
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "layout_intent": "metrics_bar",
+      "title": "H2 2026 Pipeline Build — $M ARR",
+      "subtitle": "Weighted pipeline by channel and deal stage",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      "chart_series": [
+        {
+          "name": "Direct AE",
+          "values": [
+            1.8,
+            2.4,
+            3.1,
+            3.8,
+            4.6,
+            5.5
+          ]
+        },
+        {
+          "name": "Partner Co-sell",
+          "values": [
+            0.4,
+            0.7,
+            1.1,
+            1.6,
+            2.3,
+            3.1
+          ]
+        },
+        {
+          "name": "Self-serve Upgrade",
+          "values": [
+            0.2,
+            0.4,
+            0.6,
+            0.9,
+            1.3,
+            1.8
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "visual_emphasis",
+      "title": "Launch Day Ecosystem Partners",
+      "subtitle": null,
+      "bullets": [
+        "Payment: Stripe + Adyen dual-support, 180 local payment methods",
+        "Logistics: ShipBob, Fulfil.io, Amazon Multi-Channel natively integrated",
+        "Tax: Avalara real-time tax calculation in checkout flow",
+        "Data: Snowflake data sharing app for merchant analytics",
+        "AI: OpenAI GPT-4o powers Commerce Copilot under the hood"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "people.handshake",
+      "bullet_icons": [
+        "commerce.card",
+        "commerce.cart",
+        "security.shield",
+        "data.dashboard",
+        "meta.lightbulb"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/partners/1200/675",
+          "placement": "accent_corner",
+          "caption": "Day-1 integration partners",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "chart_line",
+      "layout_intent": "metrics_trend",
+      "title": "MRR Growth Forecast — $M",
+      "subtitle": "Conservative · Base · Optimistic scenarios",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      "chart_series": [
+        {
+          "name": "Conservative",
+          "values": [
+            0.5,
+            1.0,
+            1.8,
+            2.8,
+            4.0,
+            5.4
+          ]
+        },
+        {
+          "name": "Base Case",
+          "values": [
+            0.7,
+            1.5,
+            2.6,
+            4.1,
+            5.9,
+            8.0
+          ]
+        },
+        {
+          "name": "Optimistic",
+          "values": [
+            1.0,
+            2.2,
+            4.0,
+            6.5,
+            9.4,
+            12.8
+          ]
+        }
+      ],
+      "notes": "Base case assumes 14 enterprise logos and 280 self-serve converts by EOY.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "What's Coming Next",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "4F46E5",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "Roadmap: Q4 2026 vs H1 2027",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Q4 2026",
+        "Mobile Ambient: PWA + native iOS / Android",
+        "Social Commerce: TikTok Shop, Reels checkout",
+        "B2B Portal: net-terms, quote-to-order",
+        "Headless GraphQL API v3 GA"
+      ],
+      "bullets_right": [
+        "H1 2027",
+        "Voice Commerce: Alexa + Google Home",
+        "AR Try-On: WebXR product visualisation",
+        "Autonomous Merchandising: AI-managed catalogue",
+        "International: JP, BR, IN localisation"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "time.calendar",
+      "bullet_icons": null,
+      "bullets_left_icons": [
+        null,
+        "ui.mobile",
+        "people.voice",
+        "people.team",
+        "tech.api"
+      ],
+      "bullets_right_icons": [
+        null,
+        "meta.lightbulb",
+        "ui.accessibility",
+        "status.new",
+        "nav.pin"
+      ],
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "visual_emphasis",
+      "title": "Nova Design System 3.0",
+      "subtitle": null,
+      "bullets": [
+        "140 accessible components — WCAG 2.2 AA by default",
+        "Motion library: 60 micro-interactions, GPU-accelerated",
+        "Figma ↔ Code sync: tokens published via Style Dictionary",
+        "Dark mode, RTL, and 12-column grid out of the box",
+        "Open source under MIT — community contributions welcome"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "ui.palette",
+      "bullet_icons": [
+        "ui.accessibility",
+        "status.new",
+        "ui.palette",
+        "ui.layout",
+        "tech.branch"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/designsystem/1200/675",
+          "placement": "primary_right",
+          "caption": "Nova Design System component library",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Early Proof Points",
+      "subtitle": null,
+      "bullets": [
+        "42 beta merchants across EU, US, AU — median 4.7% conversion lift",
+        "8,600 hours of merchant testing = 3 years of feedback in one cycle",
+        "NPS 74 on beta — vs industry benchmark 38 for commerce platforms",
+        "0 critical bugs shipped to production in 6-month beta window",
+        "99.99% uptime across all beta merchants — zero SLA breaches"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "data.chart",
+      "bullet_icons": [
+        "people.team",
+        "time.clock",
+        "status.success",
+        "status.success",
+        "security.shield"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "visual_emphasis",
+      "title": "Start Your Nova 3.0 Journey",
+      "subtitle": null,
+      "bullets": [
+        "Free trial: nova.io/trial — no credit card, 30 days, full feature access",
+        "Press briefing: request a one-on-one with our CPO this week",
+        "Partner enquiries: partnerships@nova.io — fast-track review available",
+        "Open source community: github.com/nova-commerce/nova — star us ⭐"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "commerce.rocket",
+      "bullet_icons": [
+        "status.success",
+        "people.voice",
+        "people.handshake",
+        "tech.branch"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/calltoaction/1200/675",
+          "placement": "banner_lower",
+          "caption": "Nova 3.0 — shipping Q3 2026",
+          "context": null
+        }
+      ]
+    }
+  ],
+  "$schema": "../../schemas/deck.schema.json"
+}

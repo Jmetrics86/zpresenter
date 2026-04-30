@@ -56,6 +56,14 @@ def test_slide_image_embeds_picture_shape(tmp_path: Path) -> None:
     assert any(s.shape_type == MSO_SHAPE_TYPE.PICTURE for s in slide.shapes)
 
 
+def test_build_accepts_template_path(tmp_path: Path) -> None:
+    tpl = tmp_path / "theme.pptx"
+    Presentation().save(str(tpl))
+    deck = Deck(title="D", slides=[Slide(layout="title", title="X")])
+    raw = presentation_to_bytes(build_presentation(deck, template_path=tpl))
+    assert len(raw) > 1000
+
+
 def test_build_roundtrip_slide_count() -> None:
     deck = Deck(
         title="Deck title",

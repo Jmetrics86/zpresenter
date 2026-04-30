@@ -101,17 +101,49 @@
       "description": "One slide with layout-specific optional fields.",
       "properties": {
         "layout": {
-          "enum": [
-            "title",
-            "title_content",
-            "section",
-            "quote",
-            "chart_bar",
-            "chart_line",
-            "two_column"
+          "anyOf": [
+            {
+              "enum": [
+                "title",
+                "title_content",
+                "section",
+                "quote",
+                "chart_bar",
+                "chart_line",
+                "two_column"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
           ],
-          "title": "Layout",
-          "type": "string"
+          "default": null,
+          "description": "PowerPoint slide layout. Omit when using layout_intent or inferrable body fields — Deck validation resolves to a concrete layout before build.",
+          "title": "Layout"
+        },
+        "layout_intent": {
+          "anyOf": [
+            {
+              "enum": [
+                "opening",
+                "chapter_break",
+                "narrative",
+                "comparison",
+                "metrics_bar",
+                "metrics_trend",
+                "pull_quote",
+                "visual_emphasis"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Semantic goal (Gamma-style). When `layout` is omitted, intent selects or constrains the resolved layout together with populated fields.",
+          "title": "Layout Intent"
         },
         "title": {
           "anyOf": [
@@ -358,9 +390,6 @@
           "title": "Images"
         }
       },
-      "required": [
-        "layout"
-      ],
       "title": "Slide",
       "type": "object"
     },

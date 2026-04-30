@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from zpresenter.audience import Severity, analyze_deck
-from zpresenter.models import AudienceProfile, Deck, Slide, SlideImage
+from zpresenter.models import AudienceProfile, ChartSeries, Deck, Slide, SlideImage
 
 
 def test_empty_deck_errors() -> None:
@@ -61,3 +61,61 @@ def test_executive_bullet_limit() -> None:
     )
     warns = [f for f in analyze_deck(deck) if "bullets" in f.message.lower()]
     assert warns
+
+
+def test_chart_fields_wrong_layout_warns() -> None:
+    deck = Deck(
+        title="T",
+        slides=[
+            Slide(layout="title", title="T"),
+            Slide(
+                layout="title_content",
+                title="Mislabeled",
+                chart_categories=["A"],
+                chart_series=[ChartSeries(name="X", values=[1.0])],
+            ),
+        ],
+    )
+    warns = [f for f in analyze_deck(deck) if "Chart fields are set" in f.message]
+    assert warns
+
+
+def test_two_columns_wrong_layout_warns() -> None:
+    deck = Deck(
+        title="T",
+        slides=[
+            Slide(layout="title", title="T"),
+            Slide(
+                layout="title_content",
+                title="Split",
+                bullets_left=["a"],
+                bullets_right=["b"],
+            ),
+        ],
+    )
+    warns = [f for f in analyze_deck(deck) if "bullets_left and bullets_right" in f.message]
+    assert warns
+
+
+def test_quote_text_wrong_layout_warns() -> None:
+    deck = Deck(
+        title="T",
+        slides=[
+            Slide(layout="title", title="T"),
+            Slide(layout="title_content", title="oops", quote="Hello world"),
+        ],
+    )
+    warns = [f for f in analyze_deck(deck) if "Quote text is set" in f.message]
+    assert warns
+
+
+def test_layout_intent_mismatch_is_info() -> None:
+    deck = Deck(
+        title="T",
+        slides=[
+            Slide(layout="title", title="T"),
+            Slide(layout="title_content", title="Body", layout_intent="opening"),
+        ],
+    )
+    infos = [f for f in analyze_deck(deck) if f.severity == Severity.info]
+    assert any("layout_intent" in f.message for f in infos)

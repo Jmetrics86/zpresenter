@@ -1,0 +1,767 @@
+{
+  "title": "Meridian Engineering — Platform Architecture Review Q3 2026",
+  "subtitle": "Engineering All-Hands Confidential · Internal Only",
+  "author": "Meridian Platform Team",
+  "audience": {
+    "technical_level": "technical",
+    "attention_span": "long"
+  },
+  "theme": {
+    "primary_hex": "0F172A",
+    "accent_hex": "059669",
+    "muted_hex": "6B7280"
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "layout_intent": "opening",
+      "title": "Meridian Platform: Architecture Review Q3 2026",
+      "subtitle": "Reliability · Scalability · Developer Experience · Cost Efficiency",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "90-min eng-wide all-hands. Recording shared post-session.",
+      "title_color_hex": null,
+      "title_icon": "tech.cpu",
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/datacenter/1200/675",
+          "placement": "banner_lower",
+          "caption": "Meridian Primary Region — SJC1",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "Context & Goals",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "059669",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Why This Architecture Review Now",
+      "subtitle": null,
+      "bullets": [
+        "Traffic 4.8× since last review — original capacity model no longer valid",
+        "P99 latency SLO missed 6 consecutive weeks — root cause is DB read path",
+        "12 separate teams now owning infra config — drift and toil accumulating",
+        "Cloud bill 31% above forecast — optimisation opportunity estimated $2.8M/yr",
+        "Incident rate: 4.2 SEV-2s per month in Q2 vs target of ≤ 1"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "meta.question",
+      "bullet_icons": [
+        "data.trend_up",
+        "status.warning",
+        "tech.branch",
+        "commerce.money",
+        "status.blocked"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "layout_intent": "metrics_bar",
+      "title": "Monthly Active Requests — Billion",
+      "subtitle": "All services combined; Q2 2026 includes AI inference traffic",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Q3 24",
+        "Q4 24",
+        "Q1 25",
+        "Q2 25",
+        "Q3 25E"
+      ],
+      "chart_series": [
+        {
+          "name": "API Gateway",
+          "values": [
+            1.2,
+            1.6,
+            2.1,
+            2.8,
+            3.6
+          ]
+        },
+        {
+          "name": "CDN / Static",
+          "values": [
+            0.8,
+            1.0,
+            1.3,
+            1.7,
+            2.2
+          ]
+        },
+        {
+          "name": "AI Inference",
+          "values": [
+            0.0,
+            0.0,
+            0.2,
+            0.6,
+            1.4
+          ]
+        }
+      ],
+      "notes": "AI inference is the fastest-growing workload class.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "Current vs. Target Architecture",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Monolithic Postgres: 14TB, single writer",
+        "Synchronous inter-service calls, no circuit breaker",
+        "Manual Kubernetes YAML per team",
+        "No central observability — 6 isolated stacks"
+      ],
+      "bullets_right": [
+        "Sharded Postgres + read replicas per domain",
+        "Async event mesh (Kafka) with retry semantics",
+        "Unified Helm chart factory, GitOps CI",
+        "OpenTelemetry → Grafana Stack centralised"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "ui.layout",
+      "bullet_icons": null,
+      "bullets_left_icons": [
+        "status.fail",
+        "status.fail",
+        "status.warning",
+        "status.warning"
+      ],
+      "bullets_right_icons": [
+        "status.success",
+        "tech.api",
+        "tech.branch",
+        "security.eye"
+      ],
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "layout_intent": "metrics_trend",
+      "title": "API P99 Latency — ms",
+      "subtitle": "SLO = 200ms; shading shows SLO breach weeks",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5",
+        "W6",
+        "W7",
+        "W8"
+      ],
+      "chart_series": [
+        {
+          "name": "Checkout API",
+          "values": [
+            178.0,
+            184.0,
+            201.0,
+            231.0,
+            248.0,
+            263.0,
+            244.0,
+            229.0
+          ]
+        },
+        {
+          "name": "Auth API",
+          "values": [
+            92.0,
+            91.0,
+            94.0,
+            97.0,
+            102.0,
+            98.0,
+            95.0,
+            93.0
+          ]
+        },
+        {
+          "name": "SLO Target",
+          "values": [
+            200.0,
+            200.0,
+            200.0,
+            200.0,
+            200.0,
+            200.0,
+            200.0,
+            200.0
+          ]
+        }
+      ],
+      "notes": "Checkout API breach started when DB connection pool saturated.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "Reliability Engineering",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "059669",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Q2 Incident Deep-Dive",
+      "subtitle": null,
+      "bullets": [
+        "SEV-1 (May 12): DB deadlock cascade — 47-min MTTR, $1.4M revenue impact",
+        "SEV-2 (May 28): CDN misconfiguration — 112-min MTTR, 18% traffic black-holed",
+        "SEV-2 (Jun 9): Auth service OOM loop — 68-min MTTR, 34K user logouts",
+        "Common theme: missing runbooks and poor alert signal-to-noise"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "tech.bug",
+      "bullet_icons": [
+        "status.fail",
+        "status.warning",
+        "status.warning",
+        "meta.lightbulb"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/incident/1200/675",
+          "placement": "accent_corner",
+          "caption": "Incident timeline Q2 2026",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "SRE Investment Priorities H2",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Reliability (immediate)",
+        "Circuit breaker on all downstream calls",
+        "Automated DB failover ≤ 60 s",
+        "On-call runbook coverage 100%",
+        "SLO dashboard for all P0 services"
+      ],
+      "bullets_right": [
+        "Efficiency (Q4)",
+        "Spot instance migration for batch jobs",
+        "Cache-aside layer for top 20 hot paths",
+        "Unified cost attribution tagging",
+        "FinOps weekly review cadence"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Circuit breaker work starts sprint 1 — no dependencies.",
+      "title_color_hex": null,
+      "title_icon": "tech.gear",
+      "bullet_icons": null,
+      "bullets_left_icons": [
+        null,
+        "status.success",
+        "time.clock",
+        "research.document",
+        "data.dashboard"
+      ],
+      "bullets_right_icons": [
+        null,
+        "commerce.money",
+        "data.filter",
+        "data.table",
+        "time.calendar"
+      ],
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "layout_intent": "metrics_bar",
+      "title": "Error Budget Consumption by Service — %",
+      "subtitle": "Q2 2026 | 30-day rolling | 99.9% SLO = 43.8 min downtime budget",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Checkout",
+        "Auth",
+        "Catalog",
+        "Payments",
+        "Notifications"
+      ],
+      "chart_series": [
+        {
+          "name": "Budget Consumed",
+          "values": [
+            218.0,
+            34.0,
+            12.0,
+            71.0,
+            8.0
+          ]
+        },
+        {
+          "name": "Budget Remaining",
+          "values": [
+            0.0,
+            66.0,
+            88.0,
+            29.0,
+            92.0
+          ]
+        }
+      ],
+      "notes": "Checkout is in overage — freeze all non-reliability feature work.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Platform Team Roadmap",
+      "subtitle": null,
+      "bullets": [
+        "July: Kafka event mesh MVP — Checkout and Auth services migrated",
+        "August: Read replica sharding — DB load reduced by estimated 65%",
+        "September: OpenTelemetry rollout complete — all P0 services instrumented",
+        "October: GitOps factory shipped — team toil reduction 4 hr/eng/week",
+        "November: Cost attribution v1 — per-service cloud cost visible to eng leads"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "time.calendar",
+      "bullet_icons": [
+        "tech.api",
+        "tech.cpu",
+        "security.eye",
+        "tech.branch",
+        "commerce.money"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/roadmap/1200/675",
+          "placement": "primary_right",
+          "caption": "Platform engineering roadmap board",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "Developer Experience (DX)",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "059669",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_line",
+      "layout_intent": "metrics_trend",
+      "title": "Deployment Frequency — Deploys per Week",
+      "subtitle": "DORA metrics tracking; target ≥ 50 deploys/week by Q4",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Q1 24",
+        "Q2 24",
+        "Q3 24",
+        "Q4 24",
+        "Q1 25",
+        "Q2 25"
+      ],
+      "chart_series": [
+        {
+          "name": "Production deploys",
+          "values": [
+            18.0,
+            21.0,
+            24.0,
+            28.0,
+            33.0,
+            37.0
+          ]
+        },
+        {
+          "name": "Staging deploys",
+          "values": [
+            42.0,
+            48.0,
+            51.0,
+            56.0,
+            61.0,
+            68.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "Developer Experience: Wins vs. Outstanding Debt",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Wins this quarter",
+        "PR-to-merge p50: 6.2h → 3.8h",
+        "Test suite: 8-min p99 → 4.1 min",
+        "Monorepo migration: 80% complete"
+      ],
+      "bullets_right": [
+        "Remaining tech debt",
+        "Local dev env: 40-min setup still too slow",
+        "Flaky tests: 3.8% flake rate vs 1% target",
+        "Docs coverage: 52% public APIs documented"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": [
+        null,
+        "status.success",
+        "status.success",
+        "status.success"
+      ],
+      "bullets_right_icons": [
+        null,
+        "status.warning",
+        "tech.bug",
+        "research.document"
+      ],
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Approved Toolchain 2026",
+      "subtitle": null,
+      "bullets": [
+        "Orchestration: Kubernetes 1.31 + Crossplane for cloud resources",
+        "CI/CD: GitHub Actions → ArgoCD (GitOps), branch deploy on PR",
+        "Observability: OpenTelemetry SDK + Grafana Cloud (traces, metrics, logs)",
+        "Service Mesh: Istio for mTLS, traffic shaping, and circuit breaking",
+        "IaC: Terraform + Terragrunt, modules published to internal registry"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "tech.gear",
+      "bullet_icons": [
+        "tech.cloud",
+        "tech.branch",
+        "security.eye",
+        "security.lock",
+        "tech.gear"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "Security & Compliance",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "059669",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Security Posture Report",
+      "subtitle": null,
+      "bullets": [
+        "SOC 2 Type II surveillance audit: PASSED — no exceptions (June 2026)",
+        "SAST/DAST integrated in CI: 98% coverage on P0 repositories",
+        "Secret scanning: 4 accidental credential leaks detected & rotated Q2",
+        "Pen test Q1: 2 high findings closed; 0 critical findings",
+        "Supply chain: SBOM generated for all container images from Q3"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "security.shield",
+      "bullet_icons": [
+        "status.success",
+        "security.shield",
+        "security.key",
+        "status.warning",
+        "research.document"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/security/1200/675",
+          "placement": "accent_corner",
+          "caption": "SOC 2 audit report June 2026",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "Zero-Trust Implementation Progress",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Completed",
+        "mTLS between all services (Istio)",
+        "OIDC SSO for all internal tools",
+        "Workload identity federation (GCP)"
+      ],
+      "bullets_right": [
+        "In progress / planned",
+        "Device posture enforcement (Q3)",
+        "Privileged Access Workstation rollout",
+        "FIDO2 hardware key for Tier-1 ops"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "security.lock",
+      "bullet_icons": null,
+      "bullets_left_icons": [
+        null,
+        "status.success",
+        "status.success",
+        "status.success"
+      ],
+      "bullets_right_icons": [
+        null,
+        "time.clock",
+        "time.clock",
+        "time.calendar"
+      ],
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "layout_intent": "metrics_bar",
+      "title": "Cloud Spend by Service — $K / Month",
+      "subtitle": "Q2 2025 actuals; target 20% reduction by Q4",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Compute",
+        "Storage",
+        "Data Transfer",
+        "Managed DB",
+        "AI / ML"
+      ],
+      "chart_series": [
+        {
+          "name": "Q2 2025 Actual",
+          "values": [
+            142.0,
+            38.0,
+            27.0,
+            94.0,
+            61.0
+          ]
+        },
+        {
+          "name": "Q4 Target",
+          "values": [
+            110.0,
+            34.0,
+            22.0,
+            78.0,
+            70.0
+          ]
+        }
+      ],
+      "notes": "Managed DB most impactful — read replica migration saves ~$16K/mo.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Platform Team: What We Need",
+      "subtitle": null,
+      "bullets": [
+        "Headcount: 2 senior SREs (approved in H2 plan) — start recruiting immediately",
+        "Budget: $180K for observability tooling (Grafana Cloud Enterprise tier)",
+        "Priority freeze: Checkout service — reliability-only sprints until SLO green",
+        "Exec sponsor: VP Eng to attend weekly platform review for 8 weeks"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Platform health = product velocity. Thank you — questions welcome.",
+      "title_color_hex": null,
+      "title_icon": "nav.target",
+      "bullet_icons": [
+        "people.team",
+        "commerce.money",
+        "status.blocked",
+        "people.voice"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    }
+  ],
+  "$schema": "../../schemas/deck.schema.json"
+}

@@ -1,0 +1,705 @@
+{
+  "title": "Apex Ventures — Market Strategy 2026",
+  "subtitle": "Confidential Board Presentation · July 2026",
+  "author": "Apex Strategy Office",
+  "audience": {
+    "technical_level": "executive",
+    "attention_span": "short"
+  },
+  "theme": {
+    "primary_hex": "1E3A5F",
+    "accent_hex": "D97706",
+    "muted_hex": "64748B"
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "layout_intent": "opening",
+      "title": "Apex Ventures: Market Strategy 2026",
+      "subtitle": "Capturing the $4.2 T digital infrastructure opportunity",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "30-min board session. Objective: approve H2 capital deployment.",
+      "title_color_hex": null,
+      "title_icon": "commerce.rocket",
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/boardroom/1200/675",
+          "placement": "banner_lower",
+          "caption": "Apex HQ — Strategy Week 2026",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "Executive Summary",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Agenda: market, strategy, financials, ask.",
+      "title_color_hex": "1E3A5F",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Why This Moment Matters",
+      "subtitle": null,
+      "bullets": [
+        "Composable infrastructure market crossing $180 B in 2026 — 3-year CAGR of 34%",
+        "Enterprise AI workloads demanding elastic, multi-cloud fabric by default",
+        "Three legacy incumbents under margin pressure — acquisition window open",
+        "Regulatory clarity on data residency unlocking EU/APAC greenfield",
+        "Apex's partner network at scale: 2,400 VARs primed for GTM acceleration"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Anchor on the CAGR stat — CFO will ask for primary source.",
+      "title_color_hex": null,
+      "title_icon": "meta.lightbulb",
+      "bullet_icons": [
+        "data.trend_up",
+        "tech.cloud",
+        "commerce.money",
+        "security.shield",
+        "people.handshake"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "layout_intent": "metrics_bar",
+      "title": "TAM by Segment — $B",
+      "subtitle": "Source: Gartner Infrastructure Services Forecast 2026",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Compute",
+        "Storage",
+        "Network",
+        "Security",
+        "AI Ops"
+      ],
+      "chart_series": [
+        {
+          "name": "2024",
+          "values": [
+            38.2,
+            24.1,
+            18.6,
+            29.4,
+            12.8
+          ]
+        },
+        {
+          "name": "2026E",
+          "values": [
+            52.7,
+            31.4,
+            24.0,
+            44.1,
+            28.5
+          ]
+        }
+      ],
+      "notes": "Security and AI Ops are the fastest growers — focus M&A lens here.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/analytics/1200/675",
+          "placement": "accent_corner",
+          "caption": "Gartner 2026",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "Competitive Positioning",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Apex (us): Composable, API-first, open standards",
+        "Sub-100ms provisioning SLA",
+        "Zero-trust by default, SOC 2 Type II",
+        "Unified control plane across 18 regions"
+      ],
+      "bullets_right": [
+        "Incumbent A: Monolithic, 6-week lead time",
+        "Incumbent B: Proprietary stack, high lock-in",
+        "Start-up C: Under-capitalised, single region",
+        "Hyperscaler: High margin, poor mid-market fit"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Don't over-dwell. Move to financial slide within 4 min.",
+      "title_color_hex": null,
+      "title_icon": "nav.target",
+      "bullet_icons": null,
+      "bullets_left_icons": [
+        "status.success",
+        "status.success",
+        "security.shield",
+        "tech.cloud"
+      ],
+      "bullets_right_icons": [
+        "status.fail",
+        "status.fail",
+        "status.warning",
+        "status.warning"
+      ],
+      "images": null
+    },
+    {
+      "layout": "quote",
+      "layout_intent": "pull_quote",
+      "title": null,
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": "Apex cut our infrastructure lead time from 11 weeks to 4 days. It's the single biggest change to our engineering velocity this decade.",
+      "attribution": "CTO, Fortune 500 Financial Services Client",
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "NPS 78. Reference call arranged for due-diligence team.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/officebuild/1200/675",
+          "placement": "accent_corner",
+          "caption": null,
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "Strategic Pillars 2026",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "1E3A5F",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "visual_emphasis",
+      "title": "Three Growth Levers",
+      "subtitle": null,
+      "bullets": [
+        "Platform Expansion: AI Ops module GA in Q3 — 340 beta customers",
+        "Geographic Reach: 4 new regions (Riyadh, Seoul, São Paulo, Warsaw)",
+        "Partner Ecosystem: co-sell motions with 3 hyperscalers signed Q2",
+        "M&A Optionality: 2 targets under NDA for security bolt-on"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Partner co-sell alone adds $42 M to H2 pipeline.",
+      "title_color_hex": null,
+      "title_icon": "data.trend_up",
+      "bullet_icons": [
+        "status.new",
+        "nav.pin",
+        "people.handshake",
+        "commerce.money"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/growth/1200/675",
+          "placement": "primary_right",
+          "caption": "Q3 AI Ops launch dashboard",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "chart_line",
+      "layout_intent": "metrics_trend",
+      "title": "ARR Trajectory — $M",
+      "subtitle": "Core platform + AI Ops + Partner channel",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Q1 24",
+        "Q2 24",
+        "Q3 24",
+        "Q4 24",
+        "Q1 25",
+        "Q2 25"
+      ],
+      "chart_series": [
+        {
+          "name": "Core ARR",
+          "values": [
+            22.1,
+            26.8,
+            31.4,
+            37.0,
+            43.2,
+            51.6
+          ]
+        },
+        {
+          "name": "AI Ops ARR",
+          "values": [
+            0.0,
+            0.0,
+            0.0,
+            1.4,
+            3.8,
+            7.2
+          ]
+        },
+        {
+          "name": "Partner ARR",
+          "values": [
+            4.2,
+            5.1,
+            6.3,
+            8.0,
+            10.5,
+            14.1
+          ]
+        }
+      ],
+      "notes": "Net retention 118% — expansion from existing base continues.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Customer Segment Priorities",
+      "subtitle": null,
+      "bullets": [
+        "Enterprise (>$1 B rev): ACV $280K avg — 72 logos, 94% retention",
+        "Upper Mid-Market: ACV $64K — fastest growing cohort at 61% YoY",
+        "Government / Public Sector: new practice, first 8 contracts H1 2025",
+        "ISV / SaaS Partners: 120 embedded integrations — NRR 131%",
+        "Geographic: EMEA now 22% of new ARR vs 9% in 2024"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "people.team",
+      "bullet_icons": [
+        "people.team",
+        "data.trend_up",
+        "security.shield",
+        "tech.api",
+        "nav.arrow_right"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "Enterprise vs. Mid-Market Playbook",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "18-month sales cycle, multi-buyer",
+        "Custom SLAs and dedicated TAM",
+        "Compliance-led: FedRAMP, ISO 27001",
+        "Avg 3.4 product modules at signature"
+      ],
+      "bullets_right": [
+        "30-day trial to close typical path",
+        "Self-serve onboarding + CSM pooled",
+        "Standard SLA tier, SOC 2 Type II",
+        "Land with compute, expand to AI Ops"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Don't conflate the two motions — separate pipeline reviews.",
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "Financial Performance",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "1E3A5F",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "chart_bar",
+      "layout_intent": "metrics_bar",
+      "title": "Quarterly Revenue — $M",
+      "subtitle": "GAAP revenue; Q2 25 preliminary",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Q3 24",
+        "Q4 24",
+        "Q1 25",
+        "Q2 25E"
+      ],
+      "chart_series": [
+        {
+          "name": "Platform",
+          "values": [
+            14.2,
+            17.8,
+            21.3,
+            25.6
+          ]
+        },
+        {
+          "name": "Professional Services",
+          "values": [
+            3.1,
+            3.8,
+            4.2,
+            4.9
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Unit Economics Snapshot",
+      "subtitle": null,
+      "bullets": [
+        "Gross margin: 74% (platform 81%, services 28%)",
+        "LTV/CAC: 6.8× enterprise, 4.1× mid-market",
+        "Payback period: 14 months (enterprise), 9 months (SMB)",
+        "Rule of 40 score: 62 — top decile for growth stage"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Gross margin improvement driven by infra efficiency roadmap.",
+      "title_color_hex": null,
+      "title_icon": "data.chart",
+      "bullet_icons": [
+        "commerce.money",
+        "data.trend_up",
+        "time.clock",
+        "meta.spark"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/finance/1200/675",
+          "placement": "accent_corner",
+          "caption": "Q2 25 board pack data",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "chart_line",
+      "layout_intent": "metrics_trend",
+      "title": "Retention & Efficiency Trends",
+      "subtitle": "Net Revenue Retention (%) and Gross Margin (%)",
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": [
+        "Q1 24",
+        "Q2 24",
+        "Q3 24",
+        "Q4 24",
+        "Q1 25",
+        "Q2 25"
+      ],
+      "chart_series": [
+        {
+          "name": "NRR %",
+          "values": [
+            109.0,
+            112.0,
+            114.0,
+            116.0,
+            117.0,
+            118.0
+          ]
+        },
+        {
+          "name": "Gross Margin %",
+          "values": [
+            68.0,
+            70.0,
+            71.5,
+            72.8,
+            73.4,
+            74.0
+          ]
+        }
+      ],
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "Risk, Roadmap & Ask",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": "1E3A5F",
+      "title_icon": null,
+      "bullet_icons": null,
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Key Risk Factors & Mitigants",
+      "subtitle": null,
+      "bullets": [
+        "Macro: enterprise spend slowdown — mitigated by 14-mo backlog coverage",
+        "Competition: hyperscaler price war — differentiated via AI Ops & compliance",
+        "Talent: engineering attrition above benchmark — comp rebalancing approved",
+        "Regulatory: EU AI Act compliance cost — budgeted €1.8M, on track"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "status.warning",
+      "bullet_icons": [
+        "status.warning",
+        "security.shield",
+        "people.person",
+        "security.lock"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "H2 2025 Priorities",
+      "subtitle": null,
+      "bullets": null,
+      "bullets_left": [
+        "Q3: AI Ops GA launch",
+        "Q3: APAC region live",
+        "Q3: 50 new enterprise logos",
+        "Q3: SOC 2 renewal complete"
+      ],
+      "bullets_right": [
+        "Q4: Series C close ($120M target)",
+        "Q4: FedRAMP moderate achieved",
+        "Q4: First ISV marketplace listing",
+        "Q4: Annual board strategy day"
+      ],
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "Series C investor deck ready for board preview next slide.",
+      "title_color_hex": null,
+      "title_icon": "time.calendar",
+      "bullet_icons": null,
+      "bullets_left_icons": [
+        "status.new",
+        "nav.pin",
+        "people.team",
+        "security.shield"
+      ],
+      "bullets_right_icons": [
+        "commerce.money",
+        "security.lock",
+        "tech.api",
+        "people.voice"
+      ],
+      "images": null
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "visual_emphasis",
+      "title": "Board Resolution Required",
+      "subtitle": null,
+      "bullets": [
+        "Approve $38M H2 operating budget — AI Ops launch, 3 new regions",
+        "Authorise M&A mandate up to $80M for security segment bolt-on",
+        "Ratify Series C timing: roadshow Q3, close target Nov 2025",
+        "Appoint independent audit committee member (candidates in appendix)"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": null,
+      "title_color_hex": null,
+      "title_icon": "nav.target",
+      "bullet_icons": [
+        "status.info",
+        "commerce.money",
+        "data.trend_up",
+        "people.person"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/meeting/1200/675",
+          "placement": "primary_right",
+          "caption": "Board decision session",
+          "context": null
+        }
+      ]
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Next Steps",
+      "subtitle": null,
+      "bullets": [
+        "CFO distributes Series C data room access — end of week",
+        "Legal: NDA counterparty list for M&A targets — 5 business days",
+        "CEO + CTO: Investor roadshow dry run — August 4",
+        "Board: Written resolution by August 10 or reconvene August 12"
+      ],
+      "bullets_left": null,
+      "bullets_right": null,
+      "quote": null,
+      "attribution": null,
+      "chart_categories": null,
+      "chart_series": null,
+      "notes": "All actions logged in board management platform. Thank you.",
+      "title_color_hex": null,
+      "title_icon": "nav.arrow_right",
+      "bullet_icons": [
+        "people.person",
+        "security.key",
+        "people.voice",
+        "time.calendar"
+      ],
+      "bullets_left_icons": null,
+      "bullets_right_icons": null,
+      "images": null
+    }
+  ],
+  "$schema": "../../schemas/deck.schema.json"
+}
