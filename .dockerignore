@@ -1,0 +1,15 @@
+.git
+.venv
+__pycache__
+*.py[cod]
+.pytest_cache
+.ruff_cache
+.env
+*.env
+webapp/node_modules
+webapp/dist
+*.pptx
+out
+.cursor
+**/agent-transcripts
+**/terminals

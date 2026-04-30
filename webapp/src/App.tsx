@@ -94,6 +94,18 @@ export default function App() {
     }
   }, [])
 
+  const handleDeckFromAI = useCallback(
+    (loaded: Deck, loadedFindings: Finding[], formattedJson: string) => {
+      setDeck(loaded)
+      setFindings(loadedFindings)
+      setJsonText(formattedJson)
+      setCurrentIdx(0)
+      setActiveTab('slides')
+      setErrors('')
+    },
+    [],
+  )
+
   // ── Export ─────────────────────────────────────────────────────────────
   const handleExport = useCallback(async () => {
     if (!deck) return
@@ -229,6 +241,7 @@ export default function App() {
           findings={findings}
           examples={examples}
           onLoadExample={handleLoadExample}
+          onDeckFromAI={handleDeckFromAI}
         />
 
         <main className="flex-1 flex flex-col items-center justify-start py-8 px-8 gap-6 overflow-auto bg-slate-100">

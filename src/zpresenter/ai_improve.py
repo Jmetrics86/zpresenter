@@ -65,26 +65,38 @@ def _build_prompt(slide: Slide, deck: Deck, instructions: str) -> str:
 # Provider streams (lazy SDK imports)
 # ---------------------------------------------------------------------------
 
-async def _stream_anthropic(prompt: str, model: str, api_key: str) -> AsyncIterator[str]:
+async def _stream_anthropic(
+    prompt: str,
+    model: str,
+    api_key: str,
+    *,
+    max_tokens: int,
+) -> AsyncIterator[str]:
     import anthropic  # noqa: PLC0415
 
     client = anthropic.AsyncAnthropic(api_key=api_key)
     async with client.messages.stream(
         model=model,
-        max_tokens=2048,
+        max_tokens=max_tokens,
         messages=[{"role": "user", "content": prompt}],
     ) as stream:
         async for text in stream.text_stream:
             yield text
 
 
-async def _stream_openai(prompt: str, model: str, api_key: str) -> AsyncIterator[str]:
+async def _stream_openai(
+    prompt: str,
+    model: str,
+    api_key: str,
+    *,
+    max_tokens: int,
+) -> AsyncIterator[str]:
     from openai import AsyncOpenAI  # noqa: PLC0415
 
     client = AsyncOpenAI(api_key=api_key)
     stream = await client.chat.completions.create(
         model=model,
-        max_tokens=2048,
+        max_tokens=max_tokens,
         messages=[{"role": "user", "content": prompt}],
         stream=True,
     )
@@ -94,11 +106,20 @@ async def _stream_openai(prompt: str, model: str, api_key: str) -> AsyncIterator
             yield delta
 
 
-async def _stream_gemini(prompt: str, model: str, api_key: str) -> AsyncIterator[str]:
+async def _stream_gemini(
+    prompt: str,
+    model: str,
+    api_key: str,
+    *,
+    max_tokens: int,
+) -> AsyncIterator[str]:
     import google.generativeai as genai  # noqa: PLC0415
 
     genai.configure(api_key=api_key)
-    gmodel = genai.GenerativeModel(model)
+    gmodel = genai.GenerativeModel(
+        model,
+        generation_config={"max_output_tokens": max_tokens},
+    )
     response = await gmodel.generate_content_async(prompt, stream=True)
     async for chunk in response:
         if chunk.text:
@@ -138,6 +159,25 @@ def resolve_api_key(provider: str, explicit_key: str) -> str:
     return os.getenv(env, "") if env else ""
 
 
+async def stream_llm_completion(
+    *,
+    prompt: str,
+    provider: str,
+    model: str,
+    api_key: str,
+    max_tokens: int = 2048,
+) -> AsyncIterator[str]:
+    """Yield token chunks from the chosen LLM (shared by slide improve and deck generation)."""
+    fn = _PROVIDER_STREAMS.get(provider)
+    if fn is None:
+        valid = ", ".join(_PROVIDER_STREAMS)
+        raise ValueError(f"Unknown provider {provider!r}. Use: {valid}.")
+
+    resolved_model = model or _DEFAULT_MODELS.get(provider, "")
+    async for chunk in fn(prompt, resolved_model, api_key, max_tokens=max_tokens):
+        yield chunk
+
+
 async def stream_improvement(
     *,
     slide: Slide,
@@ -148,11 +188,12 @@ async def stream_improvement(
     api_key: str,
 ) -> AsyncIterator[str]:
     """Yield token chunks from the chosen LLM for an improved slide JSON."""
-    fn = _PROVIDER_STREAMS.get(provider)
-    if fn is None:
-        valid = ", ".join(_PROVIDER_STREAMS)
-        raise ValueError(f"Unknown provider {provider!r}. Use: {valid}.")
-
     prompt = _build_prompt(slide, deck, instructions)
-    async for chunk in fn(prompt, model or _DEFAULT_MODELS.get(provider, ""), api_key):
+    async for chunk in stream_llm_completion(
+        prompt=prompt,
+        provider=provider,
+        model=model,
+        api_key=api_key,
+        max_tokens=2048,
+    ):
         yield chunk

@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import type { Deck, Finding, Slide } from '../types'
 import { themeColors, titleColor, CHART_COLORS } from '../theme'
+import DeckGeneratePanel from './DeckGeneratePanel'
 
 interface Props {
   activeTab: 'load' | 'slides'
@@ -16,6 +17,7 @@ interface Props {
   findings: Finding[]
   examples: string[]
   onLoadExample: (name: string) => void
+  onDeckFromAI: (deck: Deck, findings: Finding[], formattedJson: string) => void
 }
 
 /**
@@ -195,6 +197,7 @@ export default function Sidebar({
   findings,
   examples,
   onLoadExample,
+  onDeckFromAI,
 }: Props) {
   const errCount = findings.filter((f) => f.severity === 'error').length
   const warnCount = findings.filter((f) => f.severity === 'warn').length
@@ -244,6 +247,8 @@ export default function Sidebar({
               </select>
             </div>
           )}
+
+          <DeckGeneratePanel onDeckReady={onDeckFromAI} />
 
           <div className="flex flex-col flex-1">
             <label className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">

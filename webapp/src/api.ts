@@ -130,3 +130,57 @@ export async function* streamImproveSlide(
     reader.releaseLock()
   }
 }
+
+/**
+ * Stream LLM-generated Deck JSON (SSE). Events match ``ImproveEvent``.
+ */
+export async function* streamGenerateDeck(
+  req: import('./types').GenerateDeckRequest,
+): AsyncGenerator<import('./types').ImproveEvent> {
+  const body = {
+    brief: req.brief,
+    slide_count: req.slideCount,
+    technical_level: req.technicalLevel ?? null,
+    attention_span: req.attentionSpan ?? null,
+    provider: req.provider,
+    model: req.model,
+    api_key: req.apiKey,
+  }
+
+  const res = await fetch('/api/decks/generate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => null)
+    const detail = err?.detail ?? `HTTP ${res.status}`
+    throw new Error(typeof detail === 'string' ? detail : JSON.stringify(detail))
+  }
+
+  const reader = res.body!.getReader()
+  const decoder = new TextDecoder()
+  let lineBuf = ''
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      lineBuf += decoder.decode(value, { stream: true })
+      const lines = lineBuf.split('\n')
+      lineBuf = lines.pop() ?? ''
+      for (const line of lines) {
+        if (line.startsWith('data: ')) {
+          try {
+            yield JSON.parse(line.slice(6)) as import('./types').ImproveEvent
+          } catch {
+            // skip malformed SSE frame
+          }
+        }
+      }
+    }
+  } finally {
+    reader.releaseLock()
+  }
+}

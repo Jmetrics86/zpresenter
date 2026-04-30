@@ -23,7 +23,7 @@ from fastapi import Body, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel, Field, ValidationError
 
 from zpresenter.audience import analyze_deck, summarize_findings
 from zpresenter.builder import build_presentation, presentation_to_bytes
@@ -170,6 +170,59 @@ async def api_improve_slide(body: ImproveRequest) -> StreamingResponse:
                 provider=body.provider,
                 model=body.model,
                 api_key=api_key,
+            ):
+                buf += chunk
+                yield f"data: {json.dumps({'type': 'delta', 'text': chunk})}\n\n"
+        except Exception as exc:  # noqa: BLE001
+            yield f"data: {json.dumps({'type': 'error', 'message': str(exc)})}\n\n"
+            return
+        yield f"data: {json.dumps({'type': 'done', 'buffer': buf})}\n\n"
+
+    return StreamingResponse(
+        sse_stream(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+
+
+class GenerateDeckRequest(BaseModel):
+    brief: str = Field(..., min_length=12)
+    slide_count: int = Field(default=12, ge=3, le=35)
+    technical_level: Literal["executive", "general", "technical"] | None = None
+    attention_span: Literal["short", "medium", "long"] | None = None
+    provider: Literal["anthropic", "openai", "gemini"] = "anthropic"
+    model: str = ""
+    api_key: str = ""
+
+
+@app.post("/api/decks/generate")
+async def api_generate_deck(body: GenerateDeckRequest) -> StreamingResponse:
+    """Stream LLM-generated Deck JSON as Server-Sent Events (same framing as slide improve)."""
+    from zpresenter.ai_generate import stream_deck_generation  # noqa: PLC0415
+    from zpresenter.ai_improve import resolve_api_key  # noqa: PLC0415
+
+    api_key = resolve_api_key(body.provider, body.api_key)
+    if not api_key:
+        from zpresenter.ai_improve import _PROVIDER_ENV  # noqa: PLC0415
+
+        env_name = _PROVIDER_ENV.get(body.provider, "API_KEY")
+        raise HTTPException(
+            400,
+            f"No API key for provider '{body.provider}'. "
+            f"Pass api_key in the request body or set the {env_name} environment variable.",
+        )
+
+    async def sse_stream():
+        buf = ""
+        try:
+            async for chunk in stream_deck_generation(
+                brief=body.brief,
+                slide_count=body.slide_count,
+                provider=body.provider,
+                model=body.model,
+                api_key=api_key,
+                technical_level=body.technical_level,
+                attention_span=body.attention_span,
             ):
                 buf += chunk
                 yield f"data: {json.dumps({'type': 'delta', 'text': chunk})}\n\n"

@@ -1,0 +1,8 @@
+services:
+  zpresenter:
+    build: .
+    ports:
+      - "8000:8000"
+    # Optional: put API keys in `.env`, then uncomment:
+    # env_file:
+    #   - .env

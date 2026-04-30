@@ -7,7 +7,7 @@ Build **audience-aware** slide decks from structured **JSON**, validate pacing a
 1. **Input** — A single **`Deck`** JSON file: metadata (`title`, `subtitle`, `author`, optional **`theme`** and **`audience`**), plus **`slides[]`**. Each slide has a **`layout`** (explicit or **resolved** from **`layout_intent`** + body fields — Gamma-style minimal decks can omit **`layout`**; see **`examples/gamma-minimal.deck.json`**). Populate only the fields that slide type uses (bullets, charts, images, icons, notes, etc.).
 2. **Validation** — **`zpresenter check`** loads the deck with [Pydantic](https://docs.pydantic.dev/), runs layout rules (e.g. chart series lengths), optional **audience** heuristics (bullet count, pacing, missing assets), and icon/image warnings. Fix issues in JSON and re-run.
 3. **Rendering** — **`zpresenter build`** resolves **paths relative to the deck JSON file’s directory** (and optional **`https`** image URLs), applies typography and chrome from **`src/zpresenter/slide_design.py`** (fonts, margins, accent bars, dividers), maps logical layouts to PowerPoint placeholders, and writes a `.pptx`.
-4. **Deterministic output** — Given the same JSON and asset files, builds are repeatable. LLMs or humans only affect *what you put in the JSON*; the tool does not call cloud AI during `build`.
+4. **Deterministic output** — Given the same JSON and asset files, **`zpresenter build`** is repeatable and stays offline (aside from optional **`https`** images). Optional **web UI** endpoints can stream LLM suggestions when you choose; they never change how **`build`** runs.
 
 ## Requirements
 
@@ -101,6 +101,7 @@ Rendering applies a consistent **Calibri** scale, charcoal body text, accent bar
 | `zpresenter icons list` | Show semantic icon IDs (optional `--category` / `-c`). |
 | `zpresenter icons search <term>` | Search icons by id, category, or tag substring. |
 | `zpresenter icons show <id>` | Print one catalog entry (e.g. `data.chart`). |
+| `zpresenter serve` | Start FastAPI + built React UI (default http://127.0.0.1:8000). Use **`--reload`** for API hot reload; pair with **`npm run dev`** in `webapp/` for Vite HMR (see **`docs/WEBAPP.md`**). |
 
 ## Examples
 
@@ -144,28 +145,39 @@ Run `uv run python scripts/generate_sample_decks.py` to regenerate.
 zpresenter ships a browser UI with live card previews and PPTX export — no `.pptx` file needed to author.
 
 ```bash
-# 1. Install web extras
-uv add fastapi 'uvicorn[standard]'
-
-# 2. Build the React frontend (one-time)
+uv sync                                    # FastAPI + uvicorn are already project deps
 cd webapp && npm install && npm run build && cd ..
-
-# 3. Start (opens browser automatically)
-uv run zpresenter serve
+uv run zpresenter serve                   # opens browser → http://127.0.0.1:8000
 ```
 
-- **Left sidebar**: paste Deck JSON or pick a built-in example · validation findings
-- **Main canvas**: current slide as a styled 16:9 card (title, section, bullets, two-column, chart, quote)
-- **Present mode**: press **F** (or the Present button) for fullscreen; **Esc** exits
-- **Export PPTX**: one click — downloads the PowerPoint file from the same JSON
+Optional LLM SDKs (only if you use AI improver / AI deck generation): `uv add anthropic`, `uv add openai`, or `uv add google-generativeai` — same as **`AI slide improvement`** below.
 
-Dev mode: `uv run zpresenter serve --reload` in one terminal, `cd webapp && npm run dev` in another → http://localhost:5173 with hot reload.
+| Area | What it does |
+|------|----------------|
+| **Load** tab | Paste Deck JSON · pick an example · **AI deck generation** (outline → streamed JSON → Apply) · **Load Deck** · validation findings |
+| **Slides** tab | Thumbnail strip — jump to any slide |
+| **Main canvas** | Current slide as a 16:9 card (title, section, bullets, two-column, chart, quote) |
+| **Overview** | Press **O** for a Slidev-style grid; pick a slide or **Esc** to close |
+| **Present mode** | **F** or the Present button — fullscreen; **Esc** exits |
+| **AI Improve** | **I** toggles per-slide streaming edits (needs API key — see below) |
+| **Export PPTX** | Downloads `.pptx` from the same validated JSON |
+
+Dev mode: `uv run zpresenter serve --reload` in one terminal, `cd webapp && npm run dev` in another → http://localhost:5173 (proxies `/api` to port 8000).
 
 See **`docs/WEBAPP.md`** for the full setup guide and API reference.
 
-## AI slide improvement (API key setup)
+### Docker (optional)
 
-The web UI has an **✨ AI Improve** panel (keyboard shortcut `I`) that streams LLM improvements to each slide. It supports Anthropic (Claude), OpenAI (GPT-4o), and Google Gemini.
+```bash
+docker compose build
+docker compose up
+```
+
+Open http://localhost:8000 . The image includes the production React build and all three optional AI SDKs. Configure API keys via a `.env` file next to `docker-compose.yml` and uncomment the `env_file` block in `docker-compose.yml`, or pass `-e ANTHROPIC_API_KEY=…` (etc.) when running the container.
+
+## AI features (slide improvement & deck generation)
+
+The web UI can call Anthropic (Claude), OpenAI (GPT-4o / o1), or Google Gemini when you provide keys: **AI Improve** (**`I`**) refines one slide at a time; **AI deck generation** on the **Load** tab builds a full Deck from an outline (see below). Neither affects **`zpresenter build`** unless you paste or export the resulting JSON.
 
 ### Preferred method: `.env` file (server-side, most secure)
 
@@ -217,6 +229,10 @@ uv add anthropic             # Claude Sonnet / Opus
 uv add openai                # GPT-4o / o1
 uv add google-generativeai   # Gemini Flash / Pro
 ```
+
+### AI deck generation (full outline → JSON)
+
+On the web UI **Load** tab, expand **AI deck generation**: paste a topic or outline, set slide count (3–35), optional audience hints, then **Generate**. When streaming finishes, **Apply deck** runs the same validation as **Load Deck**. The API endpoint is `POST /api/decks/generate` (SSE — same event framing as slide improvement).
 
 ### Security checklist
 

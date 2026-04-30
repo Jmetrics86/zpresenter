@@ -1,0 +1,264 @@
+{
+  "$schema": "../../schemas/deck.schema.json",
+  "title": "The Global Economy: 2025 & 2026 Strategic Outlook",
+  "subtitle": "Omnicom Group | Strategy & Intelligence Briefing",
+  "author": "Omnicom Strategy Office",
+  "audience": {
+    "technical_level": "executive",
+    "attention_span": "short"
+  },
+  "theme": {
+    "primary_hex": "1E3A5F",
+    "accent_hex": "2563EB",
+    "muted_hex": "64748B"
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "layout_intent": "opening",
+      "title": "The Global Economy: 2025 & 2026 Strategic Outlook",
+      "subtitle": "Stabilized growth · AI-driven disruption · Climate as operational risk",
+      "title_icon": "nav.target",
+      "notes": "Set context: post-volatility stabilization phase. Three macro forces shape 2026 — rate normalization, tariff permanence, climate balance-sheet impact.",
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/globalcity/1200/675",
+          "placement": "banner_lower",
+          "caption": "Omnicom Strategy Intelligence · 2026"
+        }
+      ]
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "01 — Macroeconomic Overview",
+      "title_color_hex": "1E3A5F",
+      "notes": "5 minutes. Goal: shared baseline on where the global economy is heading."
+    },
+    {
+      "layout": "chart_bar",
+      "layout_intent": "metrics_bar",
+      "title": "Real GDP Growth Forecast — % YoY",
+      "subtitle": "2025E vs 2026F · IMF & Omnicom Economics baseline",
+      "chart_categories": ["Global", "United States", "China", "Euro Area"],
+      "chart_series": [
+        { "name": "2025E", "values": [3.0, 2.1, 4.9, 0.9] },
+        { "name": "2026F", "values": [3.2, 2.0, 4.6, 1.3] }
+      ],
+      "notes": "Stabilization story: global growth holds; Euro Area recovering; China in managed deceleration. US resilience despite fiscal tightening."
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Inflation & Monetary Policy Outlook",
+      "title_icon": "data.chart",
+      "bullets": [
+        "Global CPI falls to 3.1% by 2026; US core stays sticky on tariff and labor pressure",
+        "Fed targeting 3.0–3.25% neutral range by mid-2026; ECB and Bank of England following",
+        "Rate normalization unlocks credit and capex — key tailwind for H2 2026 ad recovery",
+        "Disinflation tailwind for late-2026 spending; monitor tariff re-acceleration risk"
+      ],
+      "bullet_icons": [
+        "data.trend_down",
+        "time.clock",
+        "data.trend_up",
+        "status.warning"
+      ],
+      "notes": "Emphasis: rate normalization is the hidden tailwind for our business. Slower rates = looser CMO budgets."
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "02 — Market Forces & The AI Revolution",
+      "title_color_hex": "1E3A5F"
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "visual_emphasis",
+      "title": "AI as the New Front Door",
+      "title_icon": "tech.cloud",
+      "bullets": [
+        "AI agents now control discovery journeys — from product search to purchase decision",
+        "Marketing must shift: Search Engine Optimization → AI Agent Optimization (AIAO)",
+        "Early LLM signal embedders capture disproportionate share-of-voice in AI-mediated discovery",
+        "Omni OS 3.0 is the AI infrastructure layer for 5,000+ client brands"
+      ],
+      "bullet_icons": [
+        "tech.cpu",
+        "meta.lightbulb",
+        "data.trend_up",
+        "commerce.rocket"
+      ],
+      "notes": "This is the single most important structural shift for our industry. Spend time here."
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "Tariffs: Permanent Design Constraint vs Temporary Shock",
+      "title_icon": "data.filter",
+      "bullets_left": [
+        "Old mental model (2018–2023)",
+        "Tariffs as temporary disruptions to manage around",
+        "Supply chains unchanged; absorb costs short-term",
+        "M&A driven by geography and scale"
+      ],
+      "bullets_left_icons": [null, "status.fail", "status.fail", "status.fail"],
+      "bullets_right": [
+        "New model (2024–2026+)",
+        "Tariffs as permanent operational design parameters",
+        "'Friend-shoring' and near-shoring as structural strategy",
+        "'K-shaped' M&A: strength concentrated in AI-intensive assets"
+      ],
+      "bullets_right_icons": [null, "status.success", "status.success", "data.trend_up"],
+      "notes": "Key message: clients who still treat tariffs as temporary will be uncompetitive by 2027."
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Consumer Value Sensitivity in 2026",
+      "title_icon": "people.team",
+      "bullets": [
+        "2026 consumers reward utility and transparency — value sensitivity over price alone",
+        "Retail Media Networks: $170B+ market linking ad spend to verified transaction outcomes",
+        "Brand trust commands 8–12% price premiums — ESG authenticity is now a P&L asset",
+        "DTC and loyalty programs are the primary hedge against AI agent disintermediation"
+      ],
+      "bullet_icons": [
+        "commerce.money",
+        "data.chart",
+        "security.shield",
+        "commerce.cart"
+      ],
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/retailtech/1200/675",
+          "placement": "accent_corner",
+          "context": "Retail media and consumer value 2026"
+        }
+      ]
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "03 — Environmental & Climate Risk",
+      "title_color_hex": "1E3A5F"
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "narrative",
+      "title": "Climate as an Immediate Balance Sheet Line Item",
+      "title_icon": "status.warning",
+      "bullets": [
+        "2025 extreme weather disrupted food and energy logistics — insurance premiums up 18%",
+        "2026: coastal asset valuations rewritten to reflect escalating climate-driven costs",
+        "Climate-stable multi-sourcing now standard; adds 10–15% procurement cost premium",
+        "Most-exposed client sectors: FMCG, Travel, Retail, Automotive — core Omnicom revenue"
+      ],
+      "bullet_icons": [
+        "status.warning",
+        "data.trend_down",
+        "security.shield",
+        "people.team"
+      ]
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "04 — Omnicom Strategy & Future Outlook",
+      "title_color_hex": "1E3A5F"
+    },
+    {
+      "layout": "chart_bar",
+      "layout_intent": "metrics_bar",
+      "title": "Omnicom Revenue Mix — 2026 Projection (%)",
+      "subtitle": "Precision Marketing and Specialized Services gaining share of total revenue",
+      "chart_categories": [
+        "Advertising & Media",
+        "Specialized Services",
+        "Precision Marketing",
+        "Public Relations"
+      ],
+      "chart_series": [
+        { "name": "2025E", "values": [58.0, 23.0, 9.0, 10.0] },
+        { "name": "2026F", "values": [56.0, 25.0, 10.0, 9.0] }
+      ],
+      "notes": "Data-driven services growing as a share of the mix — reinforcing the platform transformation thesis."
+    },
+    {
+      "layout": "title_content",
+      "layout_intent": "visual_emphasis",
+      "title": "Three Strategic Pillars for 2026",
+      "title_icon": "commerce.rocket",
+      "bullets": [
+        "Omni OS 3.0: Unified AI system for creative, media planning, and audience intelligence",
+        "Flywheel Digital: Retail media layer linking ad spend to transactions on Amazon, Walmart+",
+        "80,000+ employees certified in AI workflows — targeting 15–25% productivity gain"
+      ],
+      "bullet_icons": [
+        "tech.cloud",
+        "data.dashboard",
+        "people.team"
+      ],
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/techplatform/1200/675",
+          "placement": "primary_right",
+          "context": "Omni OS 3.0 platform architecture"
+        }
+      ]
+    },
+    {
+      "layout": "section",
+      "layout_intent": "chapter_break",
+      "title": "05 — SWOT Analysis",
+      "title_color_hex": "1E3A5F"
+    },
+    {
+      "layout": "two_column",
+      "layout_intent": "comparison",
+      "title": "SWOT: Marketing & Omnicom in 2026",
+      "bullets_left": [
+        "Strengths & Opportunities",
+        "Disinflation tailwind for consumer spending in late 2026",
+        "Retail Media Networks: $170B+ market with clear Omnicom positioning",
+        "Omnicom operating margin 15.4% — industry-leading efficiency",
+        "Omni platform: best-in-class first-party data integration"
+      ],
+      "bullets_left_icons": [
+        null,
+        "data.trend_up",
+        "commerce.money",
+        "meta.spark",
+        "tech.cloud"
+      ],
+      "bullets_right": [
+        "Weaknesses & Threats",
+        "High global debt levels and potential labor market cooling",
+        "Privacy-driven signal loss: third-party cookie deprecation complete",
+        "Organizational complexity at global scale constrains agility",
+        "Advertising cycle sensitivity — revenue falls faster than costs in downturns"
+      ],
+      "bullets_right_icons": [
+        null,
+        "status.warning",
+        "security.lock",
+        "tech.gear",
+        "data.trend_down"
+      ],
+      "notes": "Balanced view. The opportunity set is real — but only if we execute on AI-native transformation before competitors close the gap."
+    },
+    {
+      "layout": "quote",
+      "layout_intent": "pull_quote",
+      "quote": "Success in 2026 requires Radical Agility — using AI to compress the distance between market insights and creative execution while building supply chains resilient to geopolitical and climate-driven shocks.",
+      "attribution": "Omnicom Strategy Intelligence Briefing · Q3 2026",
+      "notes": "Close on this. Leave it on screen during Q&A.",
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/futurecity/1200/675",
+          "placement": "accent_corner"
+        }
+      ]
+    }
+  ]
+}

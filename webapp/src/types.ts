@@ -101,6 +101,17 @@ export interface ImproveEvent {
   message?: string  // error description
 }
 
+/** POST /api/decks/generate — same SSE event shape as slide improvement */
+export interface GenerateDeckRequest {
+  brief: string
+  slideCount: number
+  technicalLevel?: 'executive' | 'general' | 'technical'
+  attentionSpan?: 'short' | 'medium' | 'long'
+  provider: AIProvider
+  model: string
+  apiKey: string
+}
+
 export interface ProviderInfo {
   label: string
   models: string[]
