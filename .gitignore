@@ -23,3 +23,14 @@ out/
 # Node / webapp
 webapp/node_modules/
 webapp/dist/
+
+# Security & OS ignores
+.env
+*.pem
+*.key
+node_modules/
+__pycache__/
+*.sqlite3
+.DS_Store
+dist/
+build/
